@@ -41,11 +41,12 @@ export const featured = {
         id: 1,
         name: 'Papa Johns',
         image: require('../assets/images/pizza.png'),
+        description: 'Hot and spicy pizzas',
         lng: 38.2145602,
         lat: -85.5324269,
         address: '434 second street',
         stars: 4,
-        review: '4.4k',
+        reviews: '4.4k',
         category: 'Fast Food',
         dishes: [
             {
@@ -75,11 +76,12 @@ export const featured = {
             id: 2,
         name: 'Papa Johns',
         image: require('../assets/images/pizza.png'),
+        description: 'Hot and spicy pizzas',
         lng: 38.2145602,
         lat: -85.5324269,
         address: '434 second street',
         stars: 4,
-        review: '4.4k',
+        reviews: '4.4k',
         category: 'Fast Food',
         dishes: [
             {
@@ -109,11 +111,12 @@ export const featured = {
             id: 3,
         name: 'Papa Johns',
         image: require('../assets/images/pizza.png'),
+        description: 'Hot and spicy pizzas',
         lng: 38.2145602,
         lat: -85.5324269,
         address: '434 second street',
         stars: 4,
-        review: '4.4k',
+        reviews: '4.4k',
         category: 'Fast Food',
         dishes: [
             {

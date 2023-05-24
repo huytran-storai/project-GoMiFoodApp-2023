@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
+import  Categories  from '../components/categories';
 
 export default function HomeScreen() {
      return (
@@ -34,7 +35,8 @@ export default function HomeScreen() {
             paddingBottom: 50
         }}
     >
-       
+       {/*categories*/}
+       <Categories />
 
             </ScrollView>
         </SafeAreaView>

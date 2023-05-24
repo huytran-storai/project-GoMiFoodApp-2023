@@ -1,22 +1,16 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { categories } from '../constants'
+import { themeColors } from '../theme';
+//import { getCategories } from '../api'
 
 export default function Categories() {
  
   const [activeCategory, setActiveCategory] = useState(null);
-  const [categories, setCategories] = useState([])
-  useEffect(() => {
-    getCategories().then(data=>{
-      // console.log('got data', data[0].name);
-      setCategories(data);
-    })
-  }, [])
 
    return (
     <View className="mt-4">
       <ScrollView
-          // className="p-4"
           horizontal
           showsHorizontalScrollIndicator={false}
           className="overflow-visible"
@@ -34,9 +28,8 @@ export default function Categories() {
                   <TouchableOpacity 
                     onPress={()=> setActiveCategory(category._id)} 
                     className={"p-1 rounded-full shadow"+ btnClass}>
-                    <Image style={{width: 45, height: 45}} source={{
-                        uri: urlFor(category.image).url(),
-                    }} 
+                    <Image style={{width: 45, height: 45}} 
+                    source={category.image} 
                     />
                   </TouchableOpacity>
                   <Text className={"text-sm "+textClass}>{category.name}</Text>
