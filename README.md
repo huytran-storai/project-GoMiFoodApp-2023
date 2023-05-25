@@ -1,4 +1,5 @@
-# Chúng em push code trên branch feature/GoMiApp-2023 mời thầy vào xem ạ!Chúng em cảm ơn thầy. 
+# We are push code on branch feature/GoMiApp-2023 
+Thanks teacher!
  
 - Members :
 # Leader Fullstack: Trần Sỹ Huy
