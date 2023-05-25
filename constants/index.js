@@ -26,7 +26,7 @@ export const categories = [
     },
     {
         id: 6,
-        name: 'Sweets',
+        name: 'Pastry',
         image: require('../assets/images/pizzaIcon.png'),
     },
 
@@ -74,7 +74,7 @@ export const featured = {
         },
         {
             id: 2,
-        name: 'Papa Johns',
+        name: 'Popeyes',
         image: require('../assets/images/pizza.png'),
         description: 'Hot and spicy pizzas',
         lng: 38.2145602,
@@ -109,7 +109,7 @@ export const featured = {
         },
         {
             id: 3,
-        name: 'Papa Johns',
+        name: 'Texas Chicken',
         image: require('../assets/images/pizza.png'),
         description: 'Hot and spicy pizzas',
         lng: 38.2145602,
