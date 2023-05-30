@@ -1,4 +1,4 @@
-# We push code on branch feature/GoMiApp-2023 ☕️
+# Everything on branch OurSource/GoMiApp-2023 ☕️
 Thanks teacher! 💎 
  
 - Members :
