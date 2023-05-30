@@ -4,6 +4,6 @@ Thanks teacher! 💎
 - Members :
 # Leader Fullstack 👨🏼‍💻: Trần Sỹ Huy
 # Developer Mobile 👨🏻‍💻: Đinh Quang Anh
-# UI/UX Designer 👩🏼‍🎨: Nguyễn Hải Trình
+# UI/UX 👩🏼‍🎨: Nguyễn Hải Trình
 # Scrum Master & BackEnd 👨🏽‍⚖️: Phan Nhật Hào
 # Bussiness Analyst & Tester 👨‍💼: Hoàng Hùng Anh 
