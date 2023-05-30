@@ -1,4 +1,4 @@
-# We are push code on branch feature/GoMiApp-2023 
+# We push code on branch feature/GoMiApp-2023 
 Thanks teacher!
  
 - Members :
