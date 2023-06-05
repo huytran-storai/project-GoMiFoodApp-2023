@@ -29,7 +29,7 @@ export default function DishRow({item}){
                         >
                             <Icon.Minus strokeWidth={2} height={20} width={20} stroke={'white'} />
                         </TouchableOpacity>
-                        < Text className="px-3">
+                        <Text className="px-3">
                             {2}
                         </Text>
                         <TouchableOpacity
