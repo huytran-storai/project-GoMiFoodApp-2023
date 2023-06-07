@@ -10,7 +10,7 @@ import Intro from './screens/Intro'
 export default function Navigation(){
     return (
         <NavigationContainer >
-            <Stack.Navigator screenOptions={{
+            <Stack.Navigator initialRouteName="Intro" screenOptions={{
                 headerShown: false
             }}>
             <Stack.Screen name="Intro" component={Intro} />
