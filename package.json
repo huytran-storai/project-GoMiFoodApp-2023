@@ -22,10 +22,6 @@
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
     "react-native-svg": "13.4.0",
-<<<<<<< HEAD
-=======
-    "svg": "^0.1.0",
->>>>>>> 866295e1a17b8eb5b8dedffda9f75322e393efb9
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {

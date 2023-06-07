@@ -6,7 +6,7 @@ import * as Icon from "react-native-feather";
 
 
 export default function DishRow({item}){
-    console.log(item.image)
+    // console.log(item.image)
     // console.log(item.name)
     return (
         <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
