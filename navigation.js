@@ -8,13 +8,15 @@ import RestaurantScreen from './screens/RestaurantScreen';
 import CartScreen from './screens/CartScreen';
 import OrderPrepairing from './screens/OrderPrepairingScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
+import Intro from './screens/Intro'
 
 export default function Navigation(){
     return (
         <NavigationContainer >
-            <Stack.Navigator screenOptions={{
+            <Stack.Navigator initialRouteName="Intro" screenOptions={{
                 headerShown: false
             }}>
+            <Stack.Screen name="Intro" component={Intro} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Restaurant" component={RestaurantScreen} />
             <Stack.Screen name="Cart" options={{presentation: 'modal'}} component={CartScreen} />

@@ -20,6 +20,7 @@ export default function Categories() {
       >
 {
             categories.map((category)=>{
+              <Categories key={category.id} name={category.name} />
               let isActive = category._id==activeCategory;
               let btnClass = isActive? ' bg-gray-600': ' bg-gray-200';
               let textClass = isActive? ' font-semibold text-gray-800': ' text-gray-500';
