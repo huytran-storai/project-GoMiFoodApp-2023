@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { Text, Button, Image, Dimensions, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Swiper from 'react-native-swiper';
+// import Swiper from 'react-native-swiper';
 
 const { width, height } = Dimensions.get('window');
 
