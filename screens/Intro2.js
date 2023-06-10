@@ -15,7 +15,7 @@ const Intro2 = ({ navigation }) => {
          setCurrentPage(currentPage + 1);
     };
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(null);
     // const swiperRef = React.useRef(null);
     return (
         <SafeAreaView style={{ width, height, justifyContent: 'center', alignItems: 'center' }}>
@@ -82,10 +82,10 @@ const Intro2 = ({ navigation }) => {
         </View>
         )} */}
             <View style={{ position: 'absolute', bottom: 60, flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
-        <Text style={{ color: currentPage === 1 ? '#000000' : '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
-        <Text style={{ color: currentPage === 2 ? '#000000' : '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
-        <Text style={{ color: currentPage === 3 ? '#000000' : '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
-        <Text style={{ color: currentPage === 3 ? '#000000' : '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
+        <Text style={{ color: '#2F2E41', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
+        <Text style={{ color: '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
+        <Text style={{ color: '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
+        <Text style={{ color: '#C4C4C4', fontSize: 24, fontWeight: 'bold', marginHorizontal: 5 }}>•</Text>
              </View>
         </SafeAreaView>
       );
