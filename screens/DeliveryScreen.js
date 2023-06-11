@@ -4,9 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../theme';
 import { TouchableOpacity } from 'react-native';
 import * as Icon from "react-native-feather";
+import { useSelector } from 'react-redux';
+import { selectRestaurant } from '../slice/restaurantSlice';
 
 
 export default function DeliveryScreen() {
+    const restaurant = useSelector(selectRestaurant)
     const navigation = useNavigation();
     return (
         <View className="flex-1">
