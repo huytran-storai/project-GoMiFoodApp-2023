@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import { themeColors } from "../theme";
 import { useNavigation } from "@react-navigation/native";
 
-export default function CartIconcopy(){
+export default function categoriesList(){
     const navigation = useNavigation();
     return (
         <View className="absolute bottom-5 w-full z-50">

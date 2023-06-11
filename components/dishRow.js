@@ -4,10 +4,7 @@ import { Image, TouchableOpacity } from "react-native";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
 
-
 export default function DishRow({item}){
-    // console.log(item.image)
-    // console.log(item.name)
     return (
         <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
             <Image className="rounded-3xl" style={{height:100 , width:100 }}

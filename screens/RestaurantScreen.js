@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
-import CartIconcopy from '../components/cartIconcopy';
+import CategoriesList from '../components/categoriesList';
 import DishRow from '../components/dishRow';
 import { StatusBar } from 'expo-status-bar';
 import { useDispatch } from 'react-redux';
@@ -20,7 +20,7 @@ export default function RestaurantScreen() {
     },[])
     return (
         <View>
-            <CartIconcopy />
+            <CategoriesList />
             <StatusBar style='light'/>
 
             <ScrollView>
