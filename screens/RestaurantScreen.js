@@ -17,7 +17,7 @@ export default function RestaurantScreen() {
         if(item && item.id){
             dispatch(setRestaurant({...item}))
         }
-    })
+    },[])
     return (
         <View>
             <CartIconcopy />
