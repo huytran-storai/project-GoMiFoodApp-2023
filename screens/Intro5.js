@@ -10,8 +10,8 @@ const Intro5 = ({ navigation }) => {
         navigation.navigate('Intro4');
         setCurrentPage(currentPage - 1);
       };
-    const goToHomeScreen = () => {
-        navigation.navigate('Home');
+    const goToLogIn = () => {
+        navigation.navigate('Welcome');
     }
 
     const [currentPage, setCurrentPage] = useState(null);
@@ -28,7 +28,7 @@ const Intro5 = ({ navigation }) => {
         <TouchableOpacity onPress={goToIntro4} style={{ width: 70, height: 50, borderRadius: 30, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ color: '#3F3D56', fontSize: 14, fontWeight: 700, textAlign: 'center' }}>{"Previous"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={goToHomeScreen} style={{ width: 60, height: 50, borderRadius: 30, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={Welcome} style={{ width: 60, height: 50, borderRadius: 30, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ color: '#429F9E', fontSize: 14, fontWeight: 700, textAlign: 'center' }}>{"Finish"}</Text>
         </TouchableOpacity>
             </View>
