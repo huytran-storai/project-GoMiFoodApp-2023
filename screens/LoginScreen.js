@@ -7,8 +7,11 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function LoginScreen() {
   const navigation = useNavigation();
+  const goToHomeScreen = () => {
+    navigation.navigate('Home');
+  }
   return (
-    <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
+    <View className="flex-1 bg-white" style={{backgroundColor:'#429F9E'}}>
       <SafeAreaView  className="flex ">
         <View className="flex-row justify-start">
           <TouchableOpacity onPress={()=> navigation.goBack()} 
@@ -31,19 +34,19 @@ export default function LoginScreen() {
             <TextInput 
               className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
               placeholder="email"
-              value="john@gmail.com" 
+              value="" 
             />
             <Text className="text-gray-700 ml-4">Password</Text>
             <TextInput 
               className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
               secureTextEntry
               placeholder="password"
-              value="test12345" 
+              value="" 
             />
             <TouchableOpacity className="flex items-end">
               <Text className="text-gray-700 mb-5">Forgot Password?</Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            <TouchableOpacity onPress={goToHomeScreen}
               className="py-3 bg-yellow-400 rounded-xl">
                 <Text 
                     className="text-xl font-bold text-center text-gray-700"

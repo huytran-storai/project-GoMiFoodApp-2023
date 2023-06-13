@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function SignUpScreen() {
     const navigation = useNavigation();
   return (
-    <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>
+    <View className="flex-1 bg-white" style={{backgroundColor:'#429F9E'}}>
       <SafeAreaView className="flex">
         <View className="flex-row justify-start">
             <TouchableOpacity 
@@ -31,20 +31,26 @@ export default function SignUpScreen() {
             <Text className="text-gray-700 ml-4">Full Name</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="john snow"
+                value=""
                 placeholder='Enter Name'
             />
             <Text className="text-gray-700 ml-4">Email Address</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="john@gmail.com"
+                value=""
                 placeholder='Enter Email'
+            />
+            <Text className="text-gray-700 ml-4">Phone</Text>
+            <TextInput
+                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
+                value=""
+                placeholder='Enter Phone'
             />
             <Text className="text-gray-700 ml-4">Password</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-7"
                 secureTextEntry
-                value="test12345"
+                value=""
                 placeholder='Enter Password'
             />
             <TouchableOpacity
