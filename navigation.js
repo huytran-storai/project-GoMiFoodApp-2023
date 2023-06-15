@@ -9,27 +9,23 @@ import CartScreen from './screens/CartScreen';
 import OrderPrepairing from './screens/OrderPrepairingScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
 import Intro from './screens/Intro'
-import Intro2 from './screens/Intro2';
-import Intro3 from './screens/Intro3';
-import Intro4 from './screens/Intro4';
-import Intro5 from './screens/Intro5';
-import WelcomeScreen from './screens/WelcomeScreen'
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import TutorialScreen from './screens/TutorialScreen';
 export default function Navigation() {
     return (
         <NavigationContainer >
             <Stack.Navigator initialRouteName="Intro" screenOptions={{
                 headerShown: false
             }}>
-                <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Login" component={LoginScreen}/>
                 <Stack.Screen name='SignUp' component={SignUpScreen}/>
                 <Stack.Screen name="Intro" component={Intro} />
-                <Stack.Screen name="Intro2" component={Intro2} />
+                <Stack.Screen name="Tutorial" component={TutorialScreen}/>
+                {/* <Stack.Screen name="Intro2" component={Intro2} />
                 <Stack.Screen name="Intro3" component={Intro3} />
                 <Stack.Screen name="Intro4" component={Intro4} />
-                <Stack.Screen name="Intro5" component={Intro5} />
+                <Stack.Screen name="Intro5" component={Intro5} /> */}
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Restaurant" component={RestaurantScreen} />
                 <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
