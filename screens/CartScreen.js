@@ -5,24 +5,10 @@ import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-<<<<<<< HEAD
 import { selectRestaurant } from '../slice/restaurantSlice';
 
 export default function CartScreen() {
     const restaurant = useSelector(selectRestaurant)
-=======
-<<<<<<< HEAD
-import { selectRestaurant } from '../slices/restaurantSlice';
-
-export default function CartScreen() {
-    const restaurant = useSelector(selectRestaurant);
-=======
-import { selectRestaurant } from '../slice/restaurantSlice';
-
-export default function CartScreen() {
-    const restaurant = useSelector(selectRestaurant)
->>>>>>> OurSrouce/GoMiFoodApp-2023
->>>>>>> parent of 220b0ad5 (no message)
     const navigation = useNavigation();
     return (
         <View className="bg-white flex-1">
