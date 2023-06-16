@@ -6,13 +6,33 @@ import { themeColors } from '../theme';
 import CategoriesList from '../components/categoriesList';
 import DishRow from '../components/dishRow';
 import { StatusBar } from 'expo-status-bar';
+<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { setRestaurant } from '../slice/restaurantSlice';
+=======
+<<<<<<< HEAD
+import { setRestaurant } from '../slices/restaurantSlice';
+import { useDispatch } from 'react-redux';
+
+
+=======
+import { useDispatch } from 'react-redux';
+import { setRestaurant } from '../slice/restaurantSlice';
+>>>>>>> OurSrouce/GoMiFoodApp-2023
+>>>>>>> parent of 220b0ad5 (no message)
 export default function RestaurantScreen() {
     const { params } = useRoute();
     const navigation = useNavigation();
     let item = params;
+<<<<<<< HEAD
     const dispatch = useDispatch()
+=======
+<<<<<<< HEAD
+    const dispatch = useDispatch();
+=======
+    const dispatch = useDispatch()
+>>>>>>> OurSrouce/GoMiFoodApp-2023
+>>>>>>> parent of 220b0ad5 (no message)
     useEffect(()=>{
         if(item && item.id){
             dispatch(setRestaurant({...item}))
