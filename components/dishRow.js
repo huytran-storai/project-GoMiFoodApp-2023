@@ -34,6 +34,7 @@ export default function DishRow({ item }) {
                     <View className="flex-row items-center">
                         <TouchableOpacity
                             onPress={handleDecrease}
+                            disabled={!totalItems.length}
                             className="p-1 rounded-full"
                             style={{
                                 backgroundColor: totalItems.length ? themeColors.bgColor(1) : themeColors.bgColor(0)
