@@ -1,5 +1,5 @@
 export const themeColors = {
-    text: '#f97316',
-    bgColor: opacity=> `rgba(251, 146, 60, ${opacity})`,
+    text: '#42AAF5',
+    bgColor: opacity=> `rgba(66, 170, 245, ${opacity})`,
     bg: '#877dfa',
 }
