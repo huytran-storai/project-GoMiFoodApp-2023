@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
-import { View, Text } from 'react-native';
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import RestaurantScreen from './screens/RestaurantScreen';
@@ -16,7 +15,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
-import { CogIcon } from 'react-native-heroicons/solid';
+import { InformationCircleIcon } from 'react-native-heroicons/solid';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -28,13 +27,13 @@ function MyTabs() {
                     borderTopColor: '#E5E5E5', 
                     borderTopWidth: 1, 
                 },
-                tabBarShowLabel: false, 
+                tabBarShowLabel: true, 
                 tabBarActiveTintColor: '#429f9e', 
                 tabBarInactiveTintColor: 'gray', 
             }}
         >
             <Tab.Screen
-                name="Home"
+                name="Trang chủ"
                 component={HomeScreen}
                 options={{
                     headerShown: false,
@@ -44,7 +43,7 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Tutorial1"
+                name="Giỏ hàng"
                 component={TutorialScreen}
                 options={{
                     headerShown: false,
@@ -54,22 +53,22 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Tutorial2"
+                name="Tôi"
                 component={TutorialScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
-                        <UserIcon name="person" color={color} size={size} />
+                        <UserIcon name="profile" color={color} size={size} />
                     ),
                 }}
             />
             <Tab.Screen
-                name="Tutorial3"
+                name="Hỗ trợ"
                 component={TutorialScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
-                        <CogIcon name="cog" color={color} size={size} />
+                        <InformationCircleIcon name="help_center" color={color} size={size} />
                     ),
                 }}
             />
@@ -79,7 +78,7 @@ function MyTabs() {
 export default function Navigation() {
     return (
         <NavigationContainer >
-            <Stack.Navigator initialRouteName="Tutorial" screenOptions={{
+            <Stack.Navigator initialRouteName="Intro" screenOptions={{
                 headerShown: false
             }}>
                 <Stack.Screen name="HomeTabs" component={MyTabs} />
@@ -87,6 +86,7 @@ export default function Navigation() {
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name='SignUp' component={SignUpScreen} />
                 <Stack.Screen name="Tutorial" component={TutorialScreen} />
+                <Stack.Screen name="Intro" component={Intro} />
 
                 <Stack.Screen name="Restaurant" component={RestaurantScreen} />
                 <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
