@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 export default function LoginScreen() {
   const navigation = useNavigation();
   const goToHomeScreen = () => {
-    navigation.navigate('Home');
+    navigation.navigate('HomeTabs');
   }
   return (
     <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
