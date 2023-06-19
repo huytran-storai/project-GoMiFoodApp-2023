@@ -4,13 +4,19 @@ import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../theme';
 import { TouchableOpacity } from 'react-native';
 import * as Icon from "react-native-feather";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slice/restaurantSlice';
+import { emptyCart } from '../slice/cartSlice';
 
 
 export default function DeliveryScreen() {
     const restaurant = useSelector(selectRestaurant)
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const cancelOrder = () => {
+        navigation.navigate('Home');
+        dispatch(emptyCart());
+    }
     return (
         <View className="flex-1">
             <Image className="flex-1" source={require('../assets/images/mapDeliveryFood.jpg')} />
@@ -30,7 +36,7 @@ export default function DeliveryScreen() {
                     <Image className="w-24 h-24" source={require('../assets/images/bikeGuy2.gif')} />
                 </View>
                 <View style={{ backgroundColor: themeColors.bgColor(0.8) }} className="p-2 flex-row justify-between items-center rounded-full my-5 mx-2">
-                    <View className="p-1 rounded-full" style={{backgroundColor:'rgba(255,255,255,0.4)'}}>
+                    <View className="p-1 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}>
                         <Image className="h-16 w-16 rounded-full" source={require('../assets/images/deliveryGuy.png')} />
                     </View>
                     <View className="flex-1 ml-3">
@@ -45,7 +51,7 @@ export default function DeliveryScreen() {
                         <TouchableOpacity className="bg-white p-2 rounded-full">
                             <Icon.Phone fill={themeColors.bgColor(1)} stroke={themeColors.bgColor(1)} strokeWidth={1} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.navigate('Home')} className="bg-white p-2 rounded-full">
+                        <TouchableOpacity onPress={cancelOrder} className="bg-white p-2 rounded-full">
                             <Icon.X stroke={'red'} strokeWidth={4} />
                         </TouchableOpacity>
                     </View>

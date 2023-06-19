@@ -24,9 +24,9 @@ export default function HomeScreen() {
                     <Text className="text-gray-600">Ho Chi Minh,HCM</Text>
                 </View>
             </View>
-            <View style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 rounded-full">
+            {/* <View style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 rounded-full">
                 <Icon.Sliders height={20} width={20} strokeWidth="2.5" stroke="white" />
-            </View>
+            </View> */}
         </View>
 
 
