@@ -6,7 +6,7 @@ import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slice/restaurantSlice';
-import { removeFromCart, selectCart, selectCartTotal } from '../slice/cartSlice';
+import { removeFromCart, selectCart, selectCartTotal,emptyCart } from '../slice/cartSlice';
 import { useEffect } from 'react';
 
 export default function CartScreen() {
@@ -27,8 +27,11 @@ export default function CartScreen() {
             }
             return group;
         },{})
+        if (cartItems.length === 0) {
+            navigation.goBack();
+        }
         setGroupedItems(items);
-    },[cartItems])
+    },[cartItems,navigation])
     return (
         <View className="bg-white flex-1">
             {/* back button */}
