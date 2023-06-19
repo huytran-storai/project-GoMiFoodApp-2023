@@ -15,7 +15,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
-import { InformationCircleIcon } from 'react-native-heroicons/solid';
+import { HeartIcon } from 'react-native-heroicons/solid';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -53,6 +53,16 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
+                name="Thích"
+                component={TutorialScreen}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size }) => (
+                        <HeartIcon name="favorite" color={color} size={size} />
+                    ),
+                }}
+            />
+            <Tab.Screen
                 name="Tôi"
                 component={TutorialScreen}
                 options={{
@@ -62,16 +72,7 @@ function MyTabs() {
                     ),
                 }}
             />
-            <Tab.Screen
-                name="Hỗ trợ"
-                component={TutorialScreen}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size }) => (
-                        <InformationCircleIcon name="help_center" color={color} size={size} />
-                    ),
-                }}
-            />
+            
         </Tab.Navigator>
     );
 }

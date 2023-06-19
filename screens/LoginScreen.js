@@ -66,7 +66,6 @@ export default function LoginScreen() {
             <Text className="font-semibold text-yellow-500"> Sign Up</Text>
           </TouchableOpacity>
         </View>
-
       </View>
     </View>
 
