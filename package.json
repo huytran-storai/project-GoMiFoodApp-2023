@@ -33,6 +33,5 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true,
-  "huy":"1"
+  "private": true
 }
