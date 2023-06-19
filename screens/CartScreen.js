@@ -27,11 +27,10 @@ export default function CartScreen() {
             }
             return group;
         },{})
-        setGroupedItems(items);
-        
         if (cartItems.length === 0) {
             navigation.goBack();
         }
+        setGroupedItems(items);
     },[cartItems,navigation])
     return (
         <View className="bg-white flex-1">
