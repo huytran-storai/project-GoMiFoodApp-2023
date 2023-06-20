@@ -118,7 +118,7 @@ const TutorialScreen = ({ navigation }) => {
                     <Text className=" text-black left-0 text-center text-sm font-medium leading-4" >After create an account, you can choose the food</Text>
                     <Text className=" text-black left-0 text-center text-sm font-medium leading-4" >you want to add to your cart</Text>
                 </View>
-                <View style={{ position: 'absolute', bottom: 42, flexDirection: 'row', justifyContent: 'center', width, paddingHorizontal: 20 }}>
+                <View style={{ position: 'absolute', bottom: 43, flexDirection: 'row', justifyContent: 'center', width, paddingHorizontal: 20 }}>
                     <TouchableOpacity onPress={goToLogIn} style={{ width: 100, height: 40, borderRadius: 30,shadowColor: '#000', shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.3, shadowRadius: 3, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ color: '#429F9E', fontSize: 14, fontWeight: 700, textAlign: 'center' }}>{"Login Now!"}</Text>
                     </TouchableOpacity>
