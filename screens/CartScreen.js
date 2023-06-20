@@ -6,7 +6,7 @@ import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slice/restaurantSlice';
-import { removeFromCart, selectCart, selectCartTotal,emptyCart } from '../slice/cartSlice';
+import { removeFromCart, selectCart, selectCartTotal, emptyCart } from '../slice/cartSlice';
 import { useEffect } from 'react';
 
 export default function CartScreen() {
@@ -18,20 +18,20 @@ export default function CartScreen() {
     const deliveryFee = 2;
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        const items = cartItems.reduce((group, item)=> {
-            if(group[item.id]){
+    useEffect(() => {
+        const items = cartItems.reduce((group, item) => {
+            if (group[item.id]) {
                 group[item.id].push(item);
-            }else{
+            } else {
                 group[item.id] = [item];
             }
             return group;
-        },{})
+        }, {})
         if (cartItems.length === 0) {
             navigation.goBack();
         }
         setGroupedItems(items);
-    },[cartItems,navigation])
+    }, [cartItems, navigation])
     return (
         <View className="bg-white flex-1">
             {/* back button */}
@@ -48,6 +48,16 @@ export default function CartScreen() {
                 </View>
             </View>
             {/* delivery time */}
+            <View style={{ backgroundColor: themeColors.bgColor(0.2) }}
+                className="flex-row px-4 items-center mb-5">
+                <Image source={require('../assets/images/Rectangle.jpg')} className="w-20 h-49 m-1 rounded-full" />
+                <Text className="flex-1 pl-4">**4393</Text>
+                <TouchableOpacity>
+                    <Text className="font-bold" style={{ color: themeColors.text }}>
+                        Change
+                    </Text>
+                </TouchableOpacity>
+            </View>
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }}
                 className="flex-row px-4 items-center">
                 <Image source={require('../assets/images/bikeGuy.png')} className="w-20 h-20 rounded-full" />
@@ -78,8 +88,8 @@ export default function CartScreen() {
                                 <Text className="flex-1 font-bold text-gray-700">{dish.name}</Text>
                                 <Text className="font-semibold text-base">${dish.price}</Text>
                                 <TouchableOpacity className="p-1 rounded-full"
-                                onPress={()=> dispatch(removeFromCart({id: dish.id}))}
-                                style={{ backgroundColor: themeColors.bgColor(1) }}>
+                                    onPress={() => dispatch(removeFromCart({ id: dish.id }))}
+                                    style={{ backgroundColor: themeColors.bgColor(1) }}>
                                     <Icon.Minus strokeWidth={2} height={20}
                                         width={20} stroke="white" />
                                 </TouchableOpacity>
@@ -99,15 +109,16 @@ export default function CartScreen() {
                     <Text className="text-gray-700">${deliveryFee}</Text>
                 </View>
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700 font-extrabold">Order Total</Text>
-                    <Text className="text-gray-700 font-extrabold">${deliveryFee+cartTotal}</Text>
+                    <Text className="text-gray-900 font-extrabold">Order Total</Text>
+                    <Text className="text-gray-900 font-extrabold">${deliveryFee + cartTotal}</Text>
                 </View>
                 <View>
                     <TouchableOpacity
-                    onPress={()=> navigation.navigate('OrderPrepairing')}
-                    style={{backgroundColor:themeColors.bgColor(1)}} 
-                    className="p-3 rounded-full">
+                        onPress={() => navigation.navigate('OrderPrepairing')}
+                        style={{ backgroundColor: themeColors.bgColor(1) }}
+                        className="p-3 rounded-full">
                         <Text className="text-white text-center font-bold text-lg">
+                        <Icon.FileText strokeWidth={2} height={20} width={20} stroke="white" />
                             Place Order
                         </Text>
                     </TouchableOpacity>
