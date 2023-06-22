@@ -80,7 +80,7 @@ export default function CartScreen() {
                         let dish = items[0];
                         return (
                             <View key={key}
-                                className="flex-row items-center space-x-3 py-2 px-4 bg-white rounded-3xl mx-2 mb-3 shadow-md">
+                                className="flex-row items-center space-x-3 py-2 px-4 bg-slate-50 rounded-2xl mx-2 mb-3 shadow-lg shadow-black">
                                 <Text className="font-bold" style={{ color: themeColors.text }}>
                                     {items.length} x
                                 </Text>
@@ -101,25 +101,25 @@ export default function CartScreen() {
             {/* totals */}
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }} className="p-6 px-8 rounded-t-3xl space-y-4">
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700">Subtotal</Text>
-                    <Text className="text-gray-700">${cartTotal}</Text>
+                    <Text className="text-gray-700 text-base">Subtotal</Text>
+                    <Text className="text-gray-700 text-base">${cartTotal}</Text>
                 </View>
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700">Delivery Fee</Text>
-                    <Text className="text-gray-700">${deliveryFee}</Text>
+                    <Text className="text-gray-700 text-base">Delivery Fee</Text>
+                    <Text className="text-gray-700 text-base">${deliveryFee}</Text>
                 </View>
+                <View className="border-b"></View>
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-900 font-extrabold">Order Total</Text>
-                    <Text className="text-gray-900 font-extrabold">${deliveryFee + cartTotal}</Text>
+                    <Text className="text-gray-900 font-extrabold text-base">Order Total</Text>
+                    <Text className="text-gray-900 font-extrabold text-base">${deliveryFee + cartTotal}</Text>
                 </View>
                 <View>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('OrderPrepairing')}
                         style={{ backgroundColor: themeColors.bgColor(1) }}
                         className="p-3 rounded-full">
-                        <Text className="text-white text-center font-bold text-lg">
-                        <Icon.FileText strokeWidth={2} height={20} width={20} stroke="white" />
-                            Place Order
+                        <Text className="text-white text-center font-bold text-2xl">
+                            Order Now
                         </Text>
                     </TouchableOpacity>
                 </View>
