@@ -15,7 +15,7 @@ export default function CartScreen() {
     const cartItems = useSelector(selectCart);
     const cartTotal = useSelector(selectCartTotal);
     const [groupedItems, setGroupedItems] = useState({});
-    const deliveryFee = 2;
+    const deliveryFee = 15000;
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -51,12 +51,13 @@ export default function CartScreen() {
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }}
                 className="flex-row px-4 items-center">
                 <Image source={require('../assets/images/bikeGuy.png')} className="w-20 h-20 rounded-full" />
-                <Text className="flex-1 pl-4">Deliver in 20 - 30 minutes</Text>
+                <Text className="flex-1 pl-4">Địa chỉ của bạn: 109/23 Quang Trung, phường 12, Gò Vấp, Tphcm</Text>
                 <TouchableOpacity>
                     <Text className="font-bold" style={{ color: themeColors.text }}>
                         Change
                     </Text>
                 </TouchableOpacity>
+                
             </View>
             {/* dishes */}
             <ScrollView

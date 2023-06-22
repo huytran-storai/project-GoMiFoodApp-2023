@@ -14,7 +14,7 @@ export default function DeliveryScreen() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const cancelOrder = () => {
-        navigation.navigate('Home');
+        navigation.navigate('HomeTabs');
         dispatch(emptyCart());
     }
     return (
@@ -41,7 +41,7 @@ export default function DeliveryScreen() {
                     </View>
                     <View className="flex-1 ml-3">
                         <Text className="text-lg font-bold text-white">
-                            Syed Noman
+                            Hao Phan
                         </Text>
                         <Text className="font-semibold text-white">
                             Your Rider

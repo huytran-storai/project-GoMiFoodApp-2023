@@ -3,29 +3,30 @@ import React, { useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
-import CategoriesList from '../components/categoriesList';
+import AddButtonCart from '../components/add-button-cart';
 import DishRow from '../components/dishRow';
 import { StatusBar } from 'expo-status-bar';
 import { useDispatch } from 'react-redux';
 import { setRestaurant } from '../slice/restaurantSlice';
+import { urlFor } from '../sanity';
 export default function RestaurantScreen() {
     const { params } = useRoute();
     const navigation = useNavigation();
     let item = params;
     const dispatch = useDispatch()
     useEffect(()=>{
-        if(item && item.id){
+        if(item && item._id){
             dispatch(setRestaurant({...item}))
         }
     },[])
     return (
         <View>
-            <CategoriesList />
+            <AddButtonCart />
             <StatusBar style='light'/>
 
             <ScrollView>
                 <View className="relative">
-                    <Image className="w-full h-72" source={item.image} />
+                    <Image className="w-full h-72" source={{uri:urlFor(item.image).url()}} />
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         className="absolute top-14 left-4 bg-gray-50 p-2 rounded-full shadow">
@@ -44,16 +45,15 @@ export default function RestaurantScreen() {
                                 <Text className="text-xs">
                                     <Text className="text-green-700">{item.stars}</Text>
                                     <Text className="text-gray-700">
-                                        ({item.reviews} review) . <Text className="font-semibold">{item.category}</Text>
+                                        ({item.reviews} review) . <Text className="font-semibold">{item?.type?.name}</Text>
                                     </Text>
                                 </Text>
                             </View>
-                            <View className="flex-row items-center space-x-1">
-                                <Icon.MapPin color="gray" width="15" height="15" />
-                                <Text className="text-gray-700 text-xs">Nearby. {item.address}</Text>
-                            </View>
                         </View>
-                        <Text className="text-gray-500 mt-2">{item.description}</Text>
+                        <View className="flex-row items-center space-x-1">
+                                <Icon.MapPin color="gray" width="15" height="15" />
+                                <Text className="text-gray-700 text-xs">{item.address}</Text>
+                            </View>
                     </View>
                 </View>
                 <View className="pb-36 bg-white">
