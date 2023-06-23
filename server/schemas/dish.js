@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import CustomPriceInput from '../CustomPriceInput'
+
 
 export default defineType({
   name: 'dish',
@@ -27,7 +27,7 @@ export default defineType({
       name:'price',
       type:'number',
       title:'Price of the dishes',
-      inputComponent: CustomPriceInput,
+      // inputComponent: CustomPriceInput,
     }
   ],
 })
