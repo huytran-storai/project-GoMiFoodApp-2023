@@ -8,6 +8,7 @@ import DishRow from '../components/dishRow';
 import { StatusBar } from 'expo-status-bar';
 import { useDispatch } from 'react-redux';
 import { setRestaurant } from '../slice/restaurantSlice';
+
 export default function RestaurantScreen() {
     const { params } = useRoute();
     const navigation = useNavigation();

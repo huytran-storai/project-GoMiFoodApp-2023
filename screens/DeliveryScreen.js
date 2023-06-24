@@ -14,7 +14,7 @@ export default function DeliveryScreen() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const cancelOrder = () => {
-        navigation.navigate('Home');
+        navigation.navigate('HomeTabs');
         dispatch(emptyCart());
     }
     return (
