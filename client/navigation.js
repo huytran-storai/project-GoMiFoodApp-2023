@@ -83,12 +83,10 @@ export default function Navigation() {
                 headerShown: false
             }}>
                 <Stack.Screen name="HomeTabs" component={MyTabs} />
-
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name='SignUp' component={SignUpScreen} />
                 <Stack.Screen name="Tutorial" component={TutorialScreen} />
                 <Stack.Screen name="Intro" component={Intro} />
-
                 <Stack.Screen name="Restaurant" component={RestaurantScreen} />
                 <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
                 <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
