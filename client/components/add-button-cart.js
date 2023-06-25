@@ -23,10 +23,10 @@ export default function addButtonCart() {
                     </Text>
                 </View>
                 <Text className="flex-1 text-center font-extrabold text-white text-lg">
-                    View Cart
+                    Xem giỏ hàng
                 </Text>
                 <Text className="font-extrabold text-white text-lg">
-                    ${cartTotal}
+                    {cartTotal} VND
                 </Text>
             </TouchableOpacity>
         </View>
