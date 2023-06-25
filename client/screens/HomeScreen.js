@@ -1,12 +1,10 @@
-import { View, Text, TextInput, Image, ScrollView } from 'react-native'
+import { View, Text, TextInput, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react' 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from "react-native-feather";
-import { themeColors } from '../theme';
 import FeaturedRow from '../components/featuredRow'
 import  Categories  from '../components/categories';
-import { featured } from '../constants'
 import { getFeaturedRestaurants } from '../api';
 
 export default function HomeScreen() {
