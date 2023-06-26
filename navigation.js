@@ -79,6 +79,7 @@ function MyTabs() {
 }
 export default function Navigation() {
     const { user } = useAuth();
+
     if (user) {
         return (
             <NavigationContainer>
@@ -96,13 +97,13 @@ export default function Navigation() {
     } else {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Intro" screenOptions={{
+                <Stack.Navigator initialRouteName="Welcome" screenOptions={{
                     headerShown: false
                 }}>
-                    <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name='SignUp' component={SignUpScreen} />
-                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
                     <Stack.Screen name="Intro" component={Intro} />
+                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
+                    <Stack.Screen name='SignUp' component={SignUpScreen} />
+                    <Stack.Screen name="Login" component={LoginScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         )

@@ -10,7 +10,6 @@ import { featured } from '../constants'
 import { async } from '@firebase/util';
 import { signOut } from '@firebase/auth';
 import { auth } from '../config/firebase';
-import { useNavigation } from '@react-navigation/core';
 
 export default function HomeScreen() {
     const handleLogout = async ()=> {
