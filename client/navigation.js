@@ -16,6 +16,7 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
+import ProfileUserScreen from './screens/ProfileUserScreen'
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -63,8 +64,8 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Tôi"
-                component={TutorialScreen}
+                name="Profile"
+                component={ProfileUserScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
