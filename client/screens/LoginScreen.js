@@ -1,14 +1,12 @@
 import {
   View, Text, TouchableOpacity, Image, TextInput,
-  KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
-  Button,
   Keyboard,
 } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -44,7 +42,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{flex:1}}>
+    <KeyboardAwareScrollView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
       <SafeAreaView className="flex">
@@ -52,7 +50,7 @@ export default function LoginScreen() {
           <Image source={require("../assets/images/logo2.png")} style={{ width: 220, height: 200 }} />
         </View>
       </SafeAreaView>
-      <View style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} className="flex-1 bg-white px-8 pt-8">
+      <View style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} className="flex-1 bg-white px-8 pt-8 h-screen">
         <View className="form space-y-2">
           <Text className="text-gray-700 ml-4">Địa chỉ email</Text>
           <TextInput
@@ -93,9 +91,6 @@ export default function LoginScreen() {
       </View>
     </View>
       </TouchableWithoutFeedback>
-
-    </KeyboardAvoidingView>
-    
-
+    </KeyboardAwareScrollView>
   )
 }
