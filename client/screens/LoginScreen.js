@@ -11,6 +11,7 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [emailErrorLogin, setEmailErrorLogin] = useState('');
   const [passwordErrorLogin, setPasswordErrorLogin] = useState('');
+  const [errorLogin, setErrorLogin] = useState('');
 
   const handleSubmit = async () => {
     if(validateFields()){
@@ -18,7 +19,7 @@ export default function LoginScreen() {
         try {
           await signInWithEmailAndPassword(auth, email, password);
         } catch (err) {
-          console.log('got error: ', err.message);
+          setErrorLogin('Sai mật khẩu hoặc email chưa chính xác!')
         }
       }
     }
@@ -67,6 +68,7 @@ export default function LoginScreen() {
                 onChangeText={value => setPassword(value)}
               />
               {passwordErrorLogin !== '' && <Text className="text-red-500 ml-4">{passwordErrorLogin}</Text>}
+              {errorLogin !== '' && <Text className="text-red-500 ml-4">{errorLogin}</Text>}
               <TouchableOpacity className="flex items-end">
                 <Text className="text-gray-700 mb-5">Quên mật khẩu?</Text>
               </TouchableOpacity>
