@@ -16,6 +16,7 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
+import useAuth from './hooks/useAuth';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -23,13 +24,13 @@ function MyTabs() {
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle: {
-                    backgroundColor: '#FFFFFF', 
-                    borderTopColor: '#E5E5E5', 
-                    borderTopWidth: 1, 
+                    backgroundColor: '#FFFFFF',
+                    borderTopColor: '#E5E5E5',
+                    borderTopWidth: 1,
                 },
-                tabBarShowLabel: true, 
-                tabBarActiveTintColor: '#429f9e', 
-                tabBarInactiveTintColor: 'gray', 
+                tabBarShowLabel: true,
+                tabBarActiveTintColor: '#429f9e',
+                tabBarInactiveTintColor: 'gray',
             }}
         >
             <Tab.Screen
@@ -72,28 +73,38 @@ function MyTabs() {
                     ),
                 }}
             />
-            
+
         </Tab.Navigator>
     );
 }
 export default function Navigation() {
-    return (
-        <NavigationContainer >
-            <Stack.Navigator initialRouteName="Intro" screenOptions={{
-                headerShown: false
-            }}>
-                <Stack.Screen name="HomeTabs" component={MyTabs} />
-
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name='SignUp' component={SignUpScreen} />
-                <Stack.Screen name="Tutorial" component={TutorialScreen} />
-                <Stack.Screen name="Intro" component={Intro} />
-
-                <Stack.Screen name="Restaurant" component={RestaurantScreen} />
-                <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
-                <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
-                <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
+    const { user } = useAuth();
+    if (user) {
+        return (
+            <NavigationContainer >
+                <Stack.Navigator initialRouteName="Home" screenOptions={{
+                    headerShown: false
+                }}>
+                    <Stack.Screen name="HomeTabs" component={MyTabs} />
+                    <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+                    <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
+                    <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
+                    <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        )
+    } else {
+        return (
+            <NavigationContainer >
+                <Stack.Navigator initialRouteName="Intro" screenOptions={{
+                    headerShown: false
+                }}>
+                    <Stack.Screen name="Intro" component={Intro} />
+                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name='SignUp' component={SignUpScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        )
+    }
 }

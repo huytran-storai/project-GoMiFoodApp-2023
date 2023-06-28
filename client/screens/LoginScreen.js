@@ -1,12 +1,26 @@
 import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { auth } from '../config/firebase';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const goToHomeScreen = () => {
-    navigation.navigate('HomeTabs');
+  // const goToHomeScreen = () => {
+  //   navigation.navigate('HomeTabs');
+  // }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async () => {
+    if (email && password) {
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (err) {
+        console.log('got error: ', err.message);
+      }
+    }
   }
   return (
     <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
@@ -20,23 +34,25 @@ export default function LoginScreen() {
         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
         className="flex-1 bg-white px-8 pt-8">
         <View className="form space-y-2">
-          <Text className="text-gray-700 ml-4">Email Address</Text>
+          <Text className="text-gray-700 ml-4">Email</Text>
           <TextInput
             className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
             placeholder="email"
-            value=""
+            value={email}
+            onChangeText={value => setEmail(value)}
           />
           <Text className="text-gray-700 ml-4">Password</Text>
           <TextInput
             className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
             secureTextEntry
             placeholder="password"
-            value=""
+            value={password}
+            onChangeText={value => setPassword(value)}
           />
           <TouchableOpacity className="flex items-end">
             <Text className="text-gray-700 mb-5">Forgot Password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={goToHomeScreen}
+          <TouchableOpacity onPress={handleSubmit}
             className="py-3 bg-yellow-400 rounded-xl">
             <Text
               className="text-xl font-bold text-center text-gray-700"
