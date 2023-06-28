@@ -3,7 +3,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     restaurant: {
-        dishes: null,
+        id: null,
+    title: null,
+    imgUrl: null,
+    rating: null,
+    genre: null,
+    address: null, 
+    description: null,
+    dishes: null,
+    lng: null,
+    lat: null
     },
 }
 
@@ -19,6 +28,6 @@ export const restaurantSlice = createSlice({
 // Action creators
 export const { setRestaurant } = restaurantSlice.actions;
 
-export const selectRestaurant = state => state.restaurant.restaurant;
+export const selectRestaurant = state => state.restaurant;
 
 export default restaurantSlice.reducer

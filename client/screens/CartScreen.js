@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import { featured } from '../constants'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slice/restaurantSlice';
 import { removeFromCart, selectCart, selectCartTotal, emptyCart } from '../slice/cartSlice';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
+import { urlFor } from "../sanity";
 
 export default function CartScreen() {
     const restaurant = useSelector(selectRestaurant)
@@ -18,7 +18,7 @@ export default function CartScreen() {
     const deliveryFee = 15000;
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useMemo(() => {
         const items = cartItems.reduce((group, item) => {
             if (group[item.id]) {
                 group[item.id].push(item);
@@ -43,7 +43,7 @@ export default function CartScreen() {
                     <Icon.ArrowLeft strokeWidth={3} stroke="white" />
                 </TouchableOpacity>
                 <View>
-                    <Text className="text-center font-bold text-xl">Your cart</Text>
+                    <Text className="text-center font-bold text-xl">Giỏ hàng</Text>
                     <Text className="text-center text-gray-500">{restaurant.name}</Text>
                 </View>
             </View>
@@ -54,7 +54,7 @@ export default function CartScreen() {
                 <Text className="flex-1 pl-4">**4393</Text>
                 <TouchableOpacity>
                     <Text className="font-bold" style={{ color: themeColors.text }}>
-                        Change
+                        Thay đổi
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -64,7 +64,7 @@ export default function CartScreen() {
                 <Text className="flex-1 pl-4">Địa chỉ của bạn: 109/23 Quang Trung, phường 12, Gò Vấp, Tphcm</Text>
                 <TouchableOpacity>
                     <Text className="font-bold" style={{ color: themeColors.text }}>
-                        Change
+                    Thay đổi
                     </Text>
                 </TouchableOpacity>
                 
@@ -78,18 +78,17 @@ export default function CartScreen() {
                 className="bg-white pt-5">
                 {
                     Object.entries(groupedItems).map(([key, items]) => {
-                        let dish = items[0];
                         return (
                             <View key={key}
                                 className="flex-row items-center space-x-3 py-2 px-4 bg-slate-50 rounded-2xl mx-2 mb-3 shadow-lg shadow-black">
                                 <Text className="font-bold" style={{ color: themeColors.text }}>
                                     {items.length} x
                                 </Text>
-                                <Image className="h-14 w-14 rounded-full" source={dish.image} />
-                                <Text className="flex-1 font-bold text-gray-700">{dish.name}</Text>
-                                <Text className="font-semibold text-base">${dish.price}</Text>
+                                <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(items[0]?.image).url()}} />
+                                <Text className="flex-1 font-bold text-gray-700">{items[0]?.name}</Text>
+                                <Text className="font-semibold text-base">{items[0]?.price} VND</Text>
                                 <TouchableOpacity className="p-1 rounded-full"
-                                    onPress={() => dispatch(removeFromCart({ id: dish.id }))}
+                                    onPress={() => dispatch(removeFromCart({ id: items[0]?.id }))}
                                     style={{ backgroundColor: themeColors.bgColor(1) }}>
                                     <Icon.Minus strokeWidth={2} height={20}
                                         width={20} stroke="white" />
@@ -102,17 +101,17 @@ export default function CartScreen() {
             {/* totals */}
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }} className="p-6 px-8 rounded-t-3xl space-y-4">
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700 text-base">Subtotal</Text>
-                    <Text className="text-gray-700 text-base">${cartTotal}</Text>
+                    <Text className="text-gray-700 text-base">Tổng cộng</Text>
+                    <Text className="text-gray-700 text-base">{cartTotal} VND</Text>
                 </View>
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700 text-base">Delivery Fee</Text>
-                    <Text className="text-gray-700 text-base">${deliveryFee}</Text>
+                    <Text className="text-gray-700 text-base">Phí giao hàng</Text>
+                    <Text className="text-gray-700 text-base">{deliveryFee} VND</Text>
                 </View>
                 <View className="border-b"></View>
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-900 font-extrabold text-base">Order Total</Text>
-                    <Text className="text-gray-900 font-extrabold text-base">${deliveryFee + cartTotal}</Text>
+                    <Text className="text-gray-900 font-extrabold text-base">Tổng đơn hàng</Text>
+                    <Text className="text-gray-900 font-extrabold text-base">{deliveryFee + cartTotal} VND</Text>
                 </View>
                 <View>
                     <TouchableOpacity
@@ -120,7 +119,7 @@ export default function CartScreen() {
                         style={{ backgroundColor: themeColors.bgColor(1) }}
                         className="p-3 rounded-full">
                         <Text className="text-white text-center font-bold text-2xl">
-                            Order Now
+                            Đặt ngay
                         </Text>
                     </TouchableOpacity>
                 </View>
