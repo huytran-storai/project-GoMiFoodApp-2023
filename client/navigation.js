@@ -82,7 +82,7 @@ export default function Navigation() {
     if (user) {
         return (
             <NavigationContainer >
-                <Stack.Navigator initialRouteName="Home" screenOptions={{
+                <Stack.Navigator initialRouteName="HomeTabs" screenOptions={{
                     headerShown: false
                 }}>
                     <Stack.Screen name="HomeTabs" component={MyTabs} />

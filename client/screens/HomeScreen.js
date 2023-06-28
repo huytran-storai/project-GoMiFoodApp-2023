@@ -1,17 +1,23 @@
 import { View, Text, TextInput, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
 import FeaturedRow from '../components/featuredRow'
 import Categories from '../components/categories';
-import { featured } from '../constants'
+import { getFeaturedRestaurants } from '../api';
 import { async } from '@firebase/util';
 import { signOut } from '@firebase/auth';
 import { auth } from '../config/firebase';
 
 export default function HomeScreen() {
+    const [featuredRestaurants, setFeaturedRestaurants] = useState ([])
+    useEffect(()=>{
+        getFeaturedRestaurants().then(data =>{
+            setFeaturedRestaurants(data)
+        })
+    })
     const handleLogout = async () => {
         await signOut(auth);
     }
@@ -53,11 +59,11 @@ export default function HomeScreen() {
                 {/* featured */}
                 <View className="mt-5">
                     {
-                        [featured, featured, featured].map((item, index) => {
+                        featuredRestaurants.map((item, index) => {
                             return (
                                 <FeaturedRow
                                     key={index}
-                                    title={item.title}
+                                    title={item.name}
                                     restaurants={item.restaurants}
                                     description={item.description}
                                 />
