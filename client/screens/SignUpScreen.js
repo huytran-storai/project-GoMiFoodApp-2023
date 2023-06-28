@@ -1,4 +1,9 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, Image, TextInput,
+    KeyboardAvoidingView,
+    Platform,
+    TouchableWithoutFeedback,
+    Button,
+    Keyboard, } from 'react-native'
 import React, { useState } from 'react'
 import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -54,7 +59,9 @@ export default function SignUpScreen() {
         return isValid;
     };
     return (
-        <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{flex:1}}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
             <SafeAreaView className="flex">
                 <View className="flex-row justify-start">
                     <TouchableOpacity
@@ -126,5 +133,8 @@ export default function SignUpScreen() {
                 </View>
             </View>
         </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
+       
     )
 }

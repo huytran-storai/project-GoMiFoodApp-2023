@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
+import {
+  View, Text, TouchableOpacity, Image, TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Button,
+  Keyboard,
+} from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
@@ -37,7 +44,9 @@ export default function LoginScreen() {
   };
 
   return (
-    <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{flex:1}}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
       <SafeAreaView className="flex">
         <View className="flex-row justify-center">
           <Image source={require("../assets/images/logo2.png")} style={{ width: 220, height: 200 }} />
@@ -48,6 +57,7 @@ export default function LoginScreen() {
           <Text className="text-gray-700 ml-4">Địa chỉ email</Text>
           <TextInput
             className="p-4 bg-gray-100 text-gray-700 rounded-2xl "
+            secureTextEntry
             placeholder="Địa chỉ email"
             value={emailLogin}
             onChangeText={setEmailLogin}
@@ -82,6 +92,10 @@ export default function LoginScreen() {
         </View>
       </View>
     </View>
+      </TouchableWithoutFeedback>
+
+    </KeyboardAvoidingView>
+    
 
   )
 }
