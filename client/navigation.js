@@ -16,7 +16,9 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
-import ProfileUserScreen from './screens/ProfileUserScreen'
+import ProfileUserScreen from './screens/ProfileUserScreen';
+import MyWalletScreen from './screens/MyWalletScreen';
+import AddWalletScreen from './screens/AddWalletScreen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -83,6 +85,8 @@ export default function Navigation() {
             <Stack.Navigator initialRouteName="Intro" screenOptions={{
                 headerShown: false
             }}>
+                <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
+                <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                 <Stack.Screen name="HomeTabs" component={MyTabs} />
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name='SignUp' component={SignUpScreen} />
