@@ -26,11 +26,13 @@ export default function SignUpScreen() {
     const [fullNameError, setFullNameError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const handleSubmit = async () => {
-        if (email && password && validateFields()) {
-            try {
-                await createUserWithEmailAndPassword(auth, email, password);
-            } catch (err) {
-                console.log('got error: ', err.message);
+        if (validateFields()) {
+            if (email && password) {
+                try {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                } catch (err) {
+                    console.log('got error: ', err.message);
+                }
             }
         }
     }
