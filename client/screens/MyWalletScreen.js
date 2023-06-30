@@ -56,7 +56,7 @@ return(
     <View className="w-[393px] h-[49px] left-0 top-[113px] absolute bg-white border border border border border-stone-300 justify-center">
         {/* <Text className="left-[36px] absolute text-black text-[14px] font-medium">GoMi Pay</Text> */}
         <DropDownPicker
-                    placeholder="GoMi Pay"
+                    placeholder="GoMiPay"
                     open={open}
                     value={value}
                     items={items}
@@ -65,14 +65,14 @@ return(
                     setItems={setItems}
                     onChangeItem={handleItemSelect}
                     style={{borderWidth: 0}}
-                    dropDownContainerStyle={{borderWidth: 0}}
+                    dropDownContainerStyle={{borderWidth: 0, left: 10}}
                     containerStyle={{width: '100%', height: '100%'}}
                     itemStyle={{
                         justifyContent: 'flex-start'
                     }}
                 />
     </View>
-    <View className="w-[393px] h-[49px] left-0 top-[161px] absolute border border-zinc-300 justify-center">
+    <View className="w-[393px] h-[49px] left-0 top-[330px] absolute border border-zinc-300 justify-center">
         {/* <Text className="left-[36px] absolute text-black text-[14px] font-medium">Card</Text> */}
         <DropDownPicker
                     placeholder="Card"
