@@ -11,10 +11,10 @@ export default function ProfileUserScreen(){
         navigation.navigate('Wallet');
     }
     const goToSetting = () => {
-        navigation.navigate('Login');
+        navigation.navigate('Setting');
     }
     const goToHelpCenter = () => {
-        navigation.navigate('Login');
+        navigation.navigate('Help');
     }
     const goToTermOfService = () => {
         navigation.navigate('Login');
