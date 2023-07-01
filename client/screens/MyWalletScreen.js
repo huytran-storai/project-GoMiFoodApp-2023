@@ -38,7 +38,7 @@ const handleItemSelect2 = (item) => {
         if (value === 'option1') {
             navigation.navigate('AddWallet');
         } else if (value === 'option2') {
-            navigation.navigate('Screen2');s
+            navigation.navigate('Screen2');
         }
     }, [value]);
 
@@ -72,9 +72,9 @@ return(
                     }}
                 />
     </View>
-    <View className="w-[393px] h-[49px] left-0 top-[330px] absolute border border-zinc-300 justify-center">
+    {/* <View className="w-[393px] h-[49px] left-0 top-[330px] absolute border border-zinc-300 justify-center"> */}
         {/* <Text className="left-[36px] absolute text-black text-[14px] font-medium">Card</Text> */}
-        <DropDownPicker
+        {/* <DropDownPicker
                     placeholder="Card"
                     open={open2}
                     value={value2}
@@ -89,8 +89,8 @@ return(
                     itemStyle={{
                         justifyContent: 'flex-start'
                     }}
-                />
-    </View>
+                /> */}
+    {/* </View> */}
     {/* <Text className="left-[36px] top-[131px] absolute text-black text-[14px] font-medium">GoMi Pay</Text> */}
     {/* <Text className="left-[36px] top-[180px] absolute text-black text-[14px] font-medium">Card</Text> */}
     {/* <Image className="w-5 h-5 left-[363px] top-[128px] absolute" src="https://via.placeholder.com/20x20" />
