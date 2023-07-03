@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
-// subscribe for more videos like this :)
 export default function SignUpScreen() {
     const navigation = useNavigation();
     const [fullName, setFullName] = useState('');
