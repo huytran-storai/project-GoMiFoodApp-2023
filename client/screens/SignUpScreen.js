@@ -75,11 +75,11 @@ export default function SignUpScreen() {
 
 
         // Xác thực mật khẩu
-        if (password.trim() !== passwordVerifyError.trim()) {
-            setPasswordVerifyError('Mật khẩu không khớp');
-            isValid = false;
-            return
-        }
+        // if (password.trim() !== passwordVerifyError.trim()) {
+        //     setPasswordVerifyError('Mật khẩu không khớp');
+        //     isValid = false;
+        //     return
+        // }
         if (password.trim() === '') {
             setPasswordError('Vui lòng nhập mật khẩu');
             isValid = false;

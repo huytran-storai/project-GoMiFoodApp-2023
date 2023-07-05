@@ -16,16 +16,15 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
-<<<<<<< HEAD
+
 import useAuth from './hooks/useAuth';
-=======
+
 import ProfileUserScreen from './screens/ProfileUserScreen';
 import MyWalletScreen from './screens/MyWalletScreen';
 import AddWalletScreen from './screens/AddWalletScreen';
 import HelpCenterScreen from './screens/HelpCenter'
 import SettingScreen from './screens/SettingScreen'
 import NotificationSetting from './screens/NotificationSetting'
->>>>>>> GM021-Tab-Menu-Profile-User
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -87,7 +86,7 @@ function MyTabs() {
     );
 }
 export default function Navigation() {
-<<<<<<< HEAD
+
     const { user } = useAuth();
     if (user) {
         return (
@@ -100,6 +99,11 @@ export default function Navigation() {
                     <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
                     <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
                     <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
+                    <Stack.Screen name="Notification" component={NotificationSetting}/>
+                    <Stack.Screen name="Setting" component={SettingScreen}/>
+                    <Stack.Screen name="Help" component={HelpCenterScreen}/>
+                    <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
+                    <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
@@ -109,36 +113,15 @@ export default function Navigation() {
                 <Stack.Navigator initialRouteName="Intro" screenOptions={{
                     headerShown: false
                 }}>
-                    <Stack.Screen name="Intro" component={Intro} />
-                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name='SignUp' component={SignUpScreen} />
+                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
+                    <Stack.Screen name="Intro" component={Intro} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
     }
-=======
-    return (
-        <NavigationContainer >
-            <Stack.Navigator initialRouteName="Intro" screenOptions={{
-                headerShown: false
-            }}>
-                <Stack.Screen name="Notification" component={NotificationSetting}/>
-                <Stack.Screen name="Setting" component={SettingScreen}/>
-                <Stack.Screen name="Help" component={HelpCenterScreen}/>
-                <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
-                <Stack.Screen name="Wallet" component={MyWalletScreen}/>
-                <Stack.Screen name="HomeTabs" component={MyTabs} />
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name='SignUp' component={SignUpScreen} />
-                <Stack.Screen name="Tutorial" component={TutorialScreen} />
-                <Stack.Screen name="Intro" component={Intro} />
-                <Stack.Screen name="Restaurant" component={RestaurantScreen} />
-                <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
-                <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
-                <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
->>>>>>> GM021-Tab-Menu-Profile-User
+
+    
+
 }
