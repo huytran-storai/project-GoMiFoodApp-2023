@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, TouchableOpacity, Image, TextInput, TouchableWithoutFeedback, Keyboard, Alert, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
@@ -12,12 +12,18 @@ export default function LoginScreen() {
   const [emailErrorLogin, setEmailErrorLogin] = useState('');
   const [passwordErrorLogin, setPasswordErrorLogin] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
+  const [isLoading,setIsLoading] = useState(true);
 
   const handleSubmit = async () => {
-    if(validateFields()){
-      if (email && password ) {
+    if (validateFields()) {
+      if (email && password) {
         try {
+          setIsLoading(false);
           await signInWithEmailAndPassword(auth, email, password);
+          Alert.alert('Đăng nhập thành công!', 'Xin chào bạn', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
+
         } catch (err) {
           setErrorLogin('Sai mật khẩu hoặc email chưa chính xác!')
         }
@@ -49,7 +55,21 @@ export default function LoginScreen() {
               <Image source={require("../assets/images/logo2.png")} style={{ width: 220, height: 200 }} />
             </View>
           </SafeAreaView>
+          
           <View style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} className="flex-1 bg-white px-8 pt-8">
+          {!isLoading ? <View style={{
+            justifyContent: 'center',
+            flexDirection:'column',
+            width:'100%',
+            height:'100%',
+            position:'absolute',
+            bottom:120,
+            left:30,
+            zIndex:1
+          }}>
+            <ActivityIndicator size="large" color="#00ff00" />
+          </View> :""}
+          
             <View className="form space-y-2">
               <Text className="text-gray-700 ml-4">Email</Text>
               <TextInput
@@ -73,7 +93,7 @@ export default function LoginScreen() {
                 <Text className="text-gray-700 mb-5">Quên mật khẩu?</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={handleSubmit}
-              style={{ backgroundColor: '#429F9E' }}
+                style={{ backgroundColor: '#429F9E' }}
                 className="py-3 rounded-xl">
                 <Text
                   className="text-xl font-bold text-center text-white"
@@ -98,4 +118,6 @@ export default function LoginScreen() {
       </TouchableWithoutFeedback>
     </KeyboardAwareScrollView>
   )
+
 }
+

@@ -1,8 +1,7 @@
 import {
     View, Text, TouchableOpacity, Image, TextInput,
-    Platform,
     TouchableWithoutFeedback,
-    Keyboard,
+    Keyboard, Alert, ActivityIndicator
 } from 'react-native'
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -24,13 +23,17 @@ export default function SignUpScreen() {
     const [passwordVerifyError, setPasswordVerifyError] = useState('');
     const [fullNameError, setFullNameError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
-    
+    const [isLoading, setIsLoading] = useState(true);
     const handleSubmit = async () => {
         if (validateFields()) {
             if (email && password) {
                 try {
+                    setIsLoading(false)
                     await createUserWithEmailAndPassword(auth, email, password);
-                } catch (err) { 
+                    Alert.alert('Đăng kí thành công!', 'Xin chào bạn', [
+                        { text: 'OK', onPress: () => console.log('OK Pressed') },
+                    ]);
+                } catch (err) {
                     console.log('got error: ', err.message);
                 }
             }
@@ -39,7 +42,7 @@ export default function SignUpScreen() {
     const validateFields = () => {
         let isValid = true;
         // Xác thực họ và tên
-        const nameRegex = /^[a-zA-Z\s]+$/;
+        const nameRegex = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
         if (fullName.trim() === '') {
             setFullNameError('Vui lòng nhập họ và tên');
             isValid = false;
@@ -73,7 +76,6 @@ export default function SignUpScreen() {
         } else {
             setEmailError('');
         }
-
 
         // Xác thực mật khẩu
         if (password.trim() !== passwordVerify.trim()) {
@@ -117,6 +119,18 @@ export default function SignUpScreen() {
                     <View className="flex-1 bg-white px-8 pt-8"
                         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
                     >
+                        {!isLoading ? <View style={{
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            width: '100%',
+                            height: '100%',
+                            position: 'absolute',
+                            bottom: 120,
+                            left: 30,
+                            zIndex: 1
+                        }}>
+                            <ActivityIndicator size="large" color="#00ff00" />
+                        </View> : ""}
                         <View className="form space-y-2">
                             <Text className="text-gray-700 ml-4">Họ và tên</Text>
                             <TextInput
@@ -161,7 +175,7 @@ export default function SignUpScreen() {
                             />
                             {passwordVerifyError !== '' && <Text className="text-red-500 ml-4">{passwordVerifyError}</Text>}
                             <TouchableOpacity
-                            style={{ backgroundColor: '#429F9E' }}
+                                style={{ backgroundColor: '#429F9E' }}
                                 className="py-3 rounded-xl" onPress={handleSubmit}
                             >
                                 <Text className="font-xl font-bold text-center text-white">
