@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
-// subscribe for more videos like this :)
 export default function SignUpScreen() {
     const navigation = useNavigation();
     const [fullName, setFullName] = useState('');
@@ -25,12 +24,13 @@ export default function SignUpScreen() {
     const [passwordVerifyError, setPasswordVerifyError] = useState('');
     const [fullNameError, setFullNameError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
+    
     const handleSubmit = async () => {
         if (validateFields()) {
             if (email && password) {
                 try {
                     await createUserWithEmailAndPassword(auth, email, password);
-                } catch (err) {
+                } catch (err) { 
                     console.log('got error: ', err.message);
                 }
             }
