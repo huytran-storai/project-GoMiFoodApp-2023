@@ -16,7 +16,7 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
-
+import DepartmentScreen from './screens/DepartmentScreen'
 import useAuth from './hooks/useAuth';
 
 import ProfileUserScreen from './screens/ProfileUserScreen';
@@ -63,7 +63,7 @@ function MyTabs() {
             />
             <Tab.Screen
                 name="Danh mục"
-                component={TutorialScreen}
+                component={DepartmentScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
@@ -104,6 +104,7 @@ export default function Navigation() {
                     <Stack.Screen name="Help" component={HelpCenterScreen}/>
                     <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
                     <Stack.Screen name="Wallet" component={MyWalletScreen}/>
+                    <Stack.Screen name="Department" component={DepartmentScreen}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
