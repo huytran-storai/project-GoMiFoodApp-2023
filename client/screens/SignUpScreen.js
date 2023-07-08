@@ -1,8 +1,7 @@
 import {
     View, Text, TouchableOpacity, Image, TextInput,
-    Platform,
     TouchableWithoutFeedback,
-    Keyboard,
+    Keyboard, Alert, ActivityIndicator
 } from 'react-native'
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -24,11 +23,16 @@ export default function SignUpScreen() {
     const [passwordVerifyError, setPasswordVerifyError] = useState('');
     const [fullNameError, setFullNameError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     const handleSubmit = async () => {
         if (validateFields()) {
             if (email && password) {
                 try {
+                    setIsLoading(false)
                     await createUserWithEmailAndPassword(auth, email, password);
+                    Alert.alert('Đăng kí thành công!', 'Xin chào bạn', [
+                        { text: 'OK', onPress: () => console.log('OK Pressed') },
+                    ]);
                 } catch (err) {
                     console.log('got error: ', err.message);
                 }
@@ -38,7 +42,7 @@ export default function SignUpScreen() {
     const validateFields = () => {
         let isValid = true;
         // Xác thực họ và tên
-        const nameRegex = /^[a-zA-Z\s]+$/;
+        const nameRegex = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
         if (fullName.trim() === '') {
             setFullNameError('Vui lòng nhập họ và tên');
             isValid = false;
@@ -73,12 +77,25 @@ export default function SignUpScreen() {
             setEmailError('');
         }
 
-
         // Xác thực mật khẩu
+<<<<<<< HEAD
        
         if (password.trim() === '') {
             setPasswordError('Vui lòng nhập mật khẩu');
             isValid = false;
+=======
+        if (password.trim() !== passwordVerify.trim()) {
+            setPasswordVerifyError('Mật khẩu không khớp');
+            isValid = false;
+            return
+        }
+        if (password.trim() === '') {
+            setPasswordError('Vui lòng nhập mật khẩu');
+            isValid = false;
+        } else if (passwordVerify.trim() === '') {
+            setPasswordVerifyError('Vui lòng nhập mật khẩu');
+            isValid = false;
+>>>>>>> 086f036a5c13f13d7bb326bb479280a1c284fd32
         }
         else if (password.trim().length < 6) {
             setPasswordError('Mật khẩu phải có ít nhất 6 kí tự');
@@ -102,14 +119,14 @@ export default function SignUpScreen() {
 
     };
     return (
-        <KeyboardAwareScrollView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
+        <KeyboardAwareScrollView scrollEnabled={false}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View className="flex-1 bg-white" style={{ backgroundColor: '#429F9E' }}>
+                <View className="flex-1 bg-white h-screen" style={{ backgroundColor: '#429F9E' }}>
                     <SafeAreaView className="flex">
                         <View className="flex-row justify-start">
                             <TouchableOpacity
                                 onPress={() => navigation.goBack()}
-                                className="bg-yellow-400 p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
+                                className="bg-white p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
                             >
                                 <ArrowLeftIcon size="20" color="black" />
                             </TouchableOpacity>
@@ -117,9 +134,21 @@ export default function SignUpScreen() {
                         <View className="flex-row justify-center">
                         </View>
                     </SafeAreaView>
-                    <View className="flex-1 bg-white px-8 pt-8 h-screen"
+                    <View className="flex-1 bg-white px-8 pt-8"
                         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
                     >
+                        {!isLoading ? <View style={{
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            width: '100%',
+                            height: '100%',
+                            position: 'absolute',
+                            bottom: 120,
+                            left: 30,
+                            zIndex: 1
+                        }}>
+                            <ActivityIndicator size="large" color="#00ff00" />
+                        </View> : ""}
                         <View className="form space-y-2">
                             <Text className="text-gray-700 ml-4">Họ và tên</Text>
                             <TextInput
@@ -164,9 +193,10 @@ export default function SignUpScreen() {
                             />
                             {passwordVerifyError !== '' && <Text className="text-red-500 ml-4">{passwordVerifyError}</Text>}
                             <TouchableOpacity
-                                className="py-3 bg-yellow-400 rounded-xl" onPress={handleSubmit}
+                                style={{ backgroundColor: '#429F9E' }}
+                                className="py-3 rounded-xl" onPress={handleSubmit}
                             >
-                                <Text className="font-xl font-bold text-center text-gray-700">
+                                <Text className="font-xl font-bold text-center text-white">
                                     Đăng kí
                                 </Text>
                             </TouchableOpacity>
@@ -180,7 +210,7 @@ export default function SignUpScreen() {
                         <View className="flex-row justify-center mt-7">
                             <Text className="text-gray-500 font-semibold">Bạn đã có tài khoản rồi?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                                <Text className="font-semibold text-yellow-500"> Đăng nhập</Text>
+                                <Text className="font-semibold text-green-800"> Đăng nhập</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
