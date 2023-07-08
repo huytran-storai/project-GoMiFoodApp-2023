@@ -5,7 +5,7 @@ import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slice/restaurantSlice';
-import { removeFromCart, selectCart, selectCartTotal, emptyCart } from '../slice/cartSlice';
+import { removeFromCart, selectCart, selectCartTotal, emptyCart, lengthCartTotal } from '../slice/cartSlice';
 import { useMemo } from 'react';
 import { urlFor } from "../sanity";
 
@@ -20,10 +20,10 @@ export default function CartScreen() {
 
     useMemo(() => {
         const items = cartItems.reduce((group, item) => {
-            if (group[item.id]) {
-                group[item.id].push(item);
+            if (group[item._id]) {
+                group[item._id].push(item);
             } else {
-                group[item.id] = [item];
+                group[item._id] = [item];
             }
             return group;
         }, {})
@@ -64,10 +64,10 @@ export default function CartScreen() {
                 <Text className="flex-1 pl-4">Địa chỉ của bạn: 109/23 Quang Trung, phường 12, Gò Vấp, Tphcm</Text>
                 <TouchableOpacity>
                     <Text className="font-bold" style={{ color: themeColors.text }}>
-                    Thay đổi
+                        Thay đổi
                     </Text>
                 </TouchableOpacity>
-                
+
             </View>
             {/* dishes */}
             <ScrollView
@@ -84,11 +84,11 @@ export default function CartScreen() {
                                 <Text className="font-bold" style={{ color: themeColors.text }}>
                                     {items.length} x
                                 </Text>
-                                <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(items[0]?.image).url()}} />
+                                <Image className="h-14 w-14 rounded-full" source={{ uri: urlFor(items[0]?.image).url() }} />
                                 <Text className="flex-1 font-bold text-gray-700">{items[0]?.name}</Text>
                                 <Text className="font-semibold text-base">{items[0]?.price} VND</Text>
                                 <TouchableOpacity className="p-1 rounded-full"
-                                    onPress={() => dispatch(removeFromCart({ id: items[0]?.id }))}
+                                    onPress={() => dispatch(removeFromCart({ id: items[0]?._id }))}
                                     style={{ backgroundColor: themeColors.bgColor(1) }}>
                                     <Icon.Minus strokeWidth={2} height={20}
                                         width={20} stroke="white" />
@@ -101,7 +101,7 @@ export default function CartScreen() {
             {/* totals */}
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }} className="p-6 px-8 rounded-t-3xl space-y-4">
                 <View className="flex-row justify-between">
-                    <Text className="text-gray-700 text-base">Tổng cộng</Text>
+                    <Text className="text-gray-700 text-base">Tổng cộng ({cartItems.length} Món)</Text>
                     <Text className="text-gray-700 text-base">{cartTotal} VND</Text>
                 </View>
                 <View className="flex-row justify-between">

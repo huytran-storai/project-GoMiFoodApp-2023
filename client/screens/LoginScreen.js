@@ -12,7 +12,7 @@ export default function LoginScreen() {
   const [emailErrorLogin, setEmailErrorLogin] = useState('');
   const [passwordErrorLogin, setPasswordErrorLogin] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
-  const [isLoading,setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = async () => {
     if (validateFields()) {
@@ -55,21 +55,21 @@ export default function LoginScreen() {
               <Image source={require("../assets/images/logo2.png")} style={{ width: 220, height: 200 }} />
             </View>
           </SafeAreaView>
-          
+
           <View style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }} className="flex-1 bg-white px-8 pt-8">
-          {!isLoading ? <View style={{
-            justifyContent: 'center',
-            flexDirection:'column',
-            width:'100%',
-            height:'100%',
-            position:'absolute',
-            bottom:120,
-            left:30,
-            zIndex:1
-          }}>
-            <ActivityIndicator size="large" color="#00ff00" />
-          </View> :""}
-          
+            {!isLoading ? <View style={{
+              justifyContent: 'center',
+              flexDirection: 'column',
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              bottom: 120,
+              left: 30,
+              zIndex: 1
+            }}>
+              <ActivityIndicator size="large" color="#00ff00" />
+            </View> : ""}
+
             <View className="form space-y-2">
               <Text className="text-gray-700 ml-4">Email</Text>
               <TextInput
@@ -109,13 +109,8 @@ export default function LoginScreen() {
             </View>
             <View className="flex-row justify-center mt-7">
               <Text className="text-gray-500 font-semibold">Bạn chưa có tài khoản?</Text>
-<<<<<<< HEAD
-              <TouchableOpacity onPress={() => navigation.navigate('SignUp')} className="ml-1">
-                <Text className="font-semibold text-yellow-500">Đăng kí</Text>
-=======
               <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text className="font-semibold text-green-800">Đăng kí</Text>
->>>>>>> 086f036a5c13f13d7bb326bb479280a1c284fd32
               </TouchableOpacity>
             </View>
           </View>
