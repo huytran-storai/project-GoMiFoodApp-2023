@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
-// subscribe for more videos like this :)
 export default function SignUpScreen() {
     const navigation = useNavigation();
     const [fullName, setFullName] = useState('');
@@ -76,16 +75,9 @@ export default function SignUpScreen() {
 
 
         // Xác thực mật khẩu
-        if (password.trim() !== passwordVerifyError.trim()) {
-            setPasswordVerifyError('Mật khẩu không khớp');
-            isValid = false;
-            return
-        }
+       
         if (password.trim() === '') {
             setPasswordError('Vui lòng nhập mật khẩu');
-            isValid = false;
-        } else if (passwordVerifyError.trim() === '') {
-            setPasswordVerifyError('Vui lòng nhập mật khẩu');
             isValid = false;
         }
         else if (password.trim().length < 6) {
@@ -93,10 +85,21 @@ export default function SignUpScreen() {
             isValid = false;
         } else {
             setPasswordError('');
+            
+        }
+
+        if (password.trim() !== passwordVerifyError.trim()) {
+            setPasswordError('Mật khẩu không khớp');
+            isValid = false;
+        }
+        else{
             setPasswordVerifyError('');
         }
 
+
         return isValid;
+
+
     };
     return (
         <KeyboardAwareScrollView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>

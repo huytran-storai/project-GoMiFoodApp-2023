@@ -27,7 +27,7 @@ export default function LoginScreen() {
   const validateFields = () => {
     let isValid = true;
     if (email.trim() === '') {
-      setEmailErrorLogin('Vui lòng nhập địa chỉ email');
+      setEmailErrorLogin('Vui lòng nhập email');
       isValid = false;
     } else {
       setEmailErrorLogin('');
@@ -88,7 +88,7 @@ export default function LoginScreen() {
             </View>
             <View className="flex-row justify-center mt-7">
               <Text className="text-gray-500 font-semibold">Bạn chưa có tài khoản?</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <TouchableOpacity onPress={() => navigation.navigate('SignUp')} className="ml-1">
                 <Text className="font-semibold text-yellow-500">Đăng kí</Text>
               </TouchableOpacity>
             </View>

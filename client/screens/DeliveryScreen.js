@@ -30,7 +30,7 @@ export default function DeliveryScreen() {
                             20-30 Minutes
                         </Text>
                         <Text className="mt-2 text-gray-700 font-semibold">
-                            Your order is own its way!
+                            Your order is on its way!
                         </Text>
                     </View>
                     <Image className="w-24 h-24" source={require('../assets/images/bikeGuy2.gif')} />
