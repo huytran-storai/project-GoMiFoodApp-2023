@@ -8,6 +8,7 @@ const { width, height } = Dimensions.get('window');
 export default function AddWalletScreen() {
   const handleSubmit = () => {
     validateFields()
+    // navigation.goBack()
   //   if (validateFields()){
   //     Alert.alert(
   //       'Thêm thẻ tín dụng khong thành công',
@@ -19,23 +20,28 @@ export default function AddWalletScreen() {
   //     [{ text: 'Thành công', onPress: () => navigation.goBack() }]
   //   );
   // }
-    
   }
 
-  const [isChecked1, setChecked1] = useState(false);
-  const [isChecked2, setChecked2] = useState(false);
-  const [isChecked3, setChecked3] = useState(false);
 
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked1(!isChecked1);
+    setIsChecked2(!isChecked2);
+    setIsChecked3(!isChecked3);
+  };
   const toggleCheck1 = () => {
-    setChecked1(!isChecked1);
+    setIsChecked1(!isChecked1);
   };
 
   const toggleCheck2 = () => {
-    setChecked2(!isChecked2);
+    setIsChecked2(!isChecked2);
   };
 
   const toggleCheck3 = () => {
-    setChecked3(!isChecked3);
+    setIsChecked3(!isChecked3);
   };
 
   const [text, setText] = useState('');
@@ -67,6 +73,15 @@ export default function AddWalletScreen() {
   };
   const validateFields = () => {
     let isValid = true;
+    if (!isChecked1) {
+      isValid = false;
+    }
+    if (!isChecked2) {
+      isValid = false;
+    }
+    if (!isChecked3) {
+      isValid = false;
+    }
     // Xác thực nam
     const yearRegex = /^\d{4}$/;
         if (text4.trim() === '') {
@@ -99,7 +114,7 @@ export default function AddWalletScreen() {
         } else {
             setText2Error('');
         };
-    const numberRegex = /^[a-zA-Z\s]+$/;
+    const numberRegex =/^\d{4}$/;
         if (text3.trim() === '') {
             setText3Error('Vui lòng nhập so the vao');
             isValid = false;
@@ -118,7 +133,7 @@ export default function AddWalletScreen() {
             isValid = false;
         } else {
             setText5Error('');
-        }
+        };
   }
   const navigation = useNavigation();
   const goToLogIn = () => {
@@ -176,6 +191,7 @@ export default function AddWalletScreen() {
             <CheckBox
               checked={isChecked1}
               onPress={toggleCheck1}
+              onValueChange={handleCheckboxChange}
               containerStyle={{ backgroundColor: 'transparent' }}
             />
 
@@ -185,6 +201,8 @@ export default function AddWalletScreen() {
           <CheckBox
             checked={isChecked2}
             onPress={toggleCheck2}
+            onValueChange={handleCheckboxChange}
+            containerStyle={{ backgroundColor: 'transparent' }}
           />
           <Image className="w-10 h-10" source={require('../assets/images/Mastercard.png')} />
         </View>
@@ -193,6 +211,8 @@ export default function AddWalletScreen() {
         <CheckBox
           checked={isChecked3}
           onPress={toggleCheck3}
+          onValueChange={handleCheckboxChange}
+          containerStyle={{ backgroundColor: 'transparent' }}
         />
         <Image className="w-10 h-10" source={require('../assets/images/JCB.png')} />
       </View>
