@@ -11,12 +11,14 @@ import Intro from './screens/Intro'
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import TutorialScreen from './screens/TutorialScreen';
+import CartHistoryScreen from './screens/CartHistoryScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
 import useAuth from './hooks/useAuth';
+import { themeColors } from './theme';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -34,7 +36,7 @@ function MyTabs() {
             }}
         >
             <Tab.Screen
-                name="Trang chủ"
+                name="Trang Chủ"
                 component={HomeScreen}
                 options={{
                     headerShown: false,
@@ -44,17 +46,22 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Giỏ hàng"
-                component={TutorialScreen}
+                name="Đã Mua"
+                component={CartHistoryScreen}
                 options={{
-                    headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <ShoppingCartIcon name="cart" color={color} size={size} />
                     ),
+                    headerStyle: {
+                        backgroundColor: themeColors.bg,
+                        borderBottomWidth:1,
+                        borderBottomColor:'#fff',
+                    },
+                    headerTintColor: '#fff',
                 }}
             />
             <Tab.Screen
-                name="Danh mục"
+                name="Danh Mục"
                 component={TutorialScreen}
                 options={{
                     headerShown: false,
