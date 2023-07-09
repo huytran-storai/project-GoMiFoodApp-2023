@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react';
-import { Image, Dimensions, View, Text, StyleSheet, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, View, Text, StyleSheet, FlatList, TouchableOpacity, } from 'react-native';
 import { themeColors } from "../theme";
 
 const CartHistoryScreen = ({ navigation }) => {
+
     const foodCart = [
-        { id: '1', name: "Hủ Tiếu", total: '50000' },
-        { id: '2', name: "Bún Bò", total: '90000' },
+        { id: '1', name: "Dì Bảy", total: '50000' },
+        { id: '2', name: "Chú Ba", total: '90000' },
     ];
+    const goToDetail = () =>{
+        navigation.navigate('CartDetailHistory')
+    }
     return (
         <>
             <View style={styles.topHeader}>
                 <Text style={styles.textHeader}>Tất Cả</Text>
             </View>
             <View style={styles.topTitle}>
-                <Text style={styles.textTitle}>Gần Đây</Text>
+                <Text style={styles.textTitle}>Đơn Hàng Gần Đây</Text>
             </View>
             <FlatList data={foodCart}
                 renderItem={({ item }) => <View style={styles.listCart}>
@@ -29,11 +33,11 @@ const CartHistoryScreen = ({ navigation }) => {
                         <Text>12/08/2023 || 14:30</Text>
                         <View style={styles.btn}>
                             <View style={styles.btnDe}>
-                                <Text className="text-[10px]" style={styles.btnDetail}>Chi Tiết</Text>
+                                <Text className="text-[10px]" style={styles.btnDetail}>Đã Hoàn tất</Text>
                             </View>
-                            <View style={styles.btnRe}>
+                            <TouchableOpacity style={styles.btnRe} onPress={goToDetail}>
                                 <Text className="text-[10px]" style={styles.btnReorder}>Đặt Lại</Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>}
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
     },
     btnDetail: {
         textAlign: 'center',
-        color: 'white',
+        color: 'green',
         fontWeight: 'bold',
     },
     btnReorder: {
@@ -98,13 +102,14 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 10,
         padding: 10,
-        backgroundColor: themeColors.bg,
+        borderColor:'green',
+        borderWidth:1
     },
     btnRe: {
-        paddingVertical: 5,
+        paddingVertical: 6,
         borderRadius: 10,
         padding: 10,
-        backgroundColor: 'red',
+        backgroundColor: '#d65845',
     }
 })
 

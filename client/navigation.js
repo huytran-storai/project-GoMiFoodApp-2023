@@ -12,6 +12,7 @@ import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import TutorialScreen from './screens/TutorialScreen';
 import CartHistoryScreen from './screens/CartHistoryScreen';
+import CartDetailHistory from './screens/CartDetailHistory';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
@@ -46,7 +47,7 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Đã Mua"
+                name="Lịch sử"
                 component={CartHistoryScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
@@ -97,6 +98,8 @@ export default function Navigation() {
                     <Stack.Screen name="Cart" options={{ presentation: 'modal' }} component={CartScreen} />
                     <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
                     <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
+                    <Stack.Screen name="CartDetailHistory" options={{ presentation: 'fullScreenModal' }} component={CartDetailHistory} />
+                    
                 </Stack.Navigator>
             </NavigationContainer>
         )
