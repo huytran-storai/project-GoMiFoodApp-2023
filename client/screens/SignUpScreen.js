@@ -81,7 +81,6 @@ export default function SignUpScreen() {
         if (password.trim() !== passwordVerify.trim()) {
             setPasswordVerifyError('Mật khẩu không khớp');
             isValid = false;
-            return
         }
         if (password.trim() === '') {
             setPasswordError('Vui lòng nhập mật khẩu');
@@ -90,22 +89,12 @@ export default function SignUpScreen() {
             setPasswordVerifyError('Vui lòng nhập mật khẩu');
             isValid = false;
         }
-        else if (password.trim().length < 6) {
+        else if (password.trim().length <= 6) {
             setPasswordError('Mật khẩu phải có ít nhất 6 kí tự');
             isValid = false;
         } else {
             setPasswordError('');
         }
-
-        if (password.trim() !== passwordVerifyError.trim()) {
-            setPasswordError('Mật khẩu không khớp');
-            isValid = false;
-        }
-        else{
-            setPasswordVerifyError('');
-        }
-
-
         return isValid;
 
 
