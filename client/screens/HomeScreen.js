@@ -6,9 +6,6 @@ import * as Icon from "react-native-feather";
 import FeaturedRow from '../components/featuredRow'
 import  Categories  from '../components/categories';
 import { getFeaturedRestaurants } from '../api';
-import { async } from '@firebase/util';
-import { signOut } from '@firebase/auth';
-import { auth } from '../config/firebase';
 import { themeColors } from '../theme';
 
 export default function HomeScreen() {
@@ -18,9 +15,7 @@ export default function HomeScreen() {
             setFeaturedRestaurants(data)
         })
     })
-    const handleLogout = async () => {
-        await signOut(auth);
-    }
+    
     return (
         <SafeAreaView className="bg-white" >
             <StatusBar
@@ -36,9 +31,6 @@ export default function HomeScreen() {
                         <Text className="text-gray-600">Ho Chi Minh,HCM</Text>
                     </View>
                 </View>
-                <TouchableOpacity onPress={handleLogout}>
-                    <Icon.XCircle height='30' width='30' stroke={themeColors.bgColor(1)}/>
-                </TouchableOpacity>
             </View>
 
 

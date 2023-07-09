@@ -1,6 +1,9 @@
-import {TouchableOpacity, View, Text,Image } from 'react-native'
-import React from 'react' 
-import { useNavigation } from '@react-navigation/native'
+import {TouchableOpacity, View, Text,Image } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { async } from '@firebase/util';
+import { signOut } from '@firebase/auth';
+import { auth } from '../config/firebase';
 export default function ProfileUserScreen(){
     const navigation = useNavigation();
     const goToLogIn = () => {
@@ -18,6 +21,9 @@ export default function ProfileUserScreen(){
     // const goToTermOfService = () => {
     //     navigation.navigate('Login');
     // }
+    const handleLogout = async () => {
+        await signOut(auth);
+    }
 return(
 <View className="w-[393px] h-[852px] relative bg-teal-500">
     <View className="w-[393px] h-[777px] left-0 top-[145px] absolute bg-white rounded-3xl" />
@@ -39,7 +45,7 @@ return(
         <Image className="w-5 h-5 left-[35px] absolute" source={require('../assets/images/Document.png')}/>
         <Text className=" left-[60px] absolute text-black text-[13px] font-medium">{"Term of Service"}</Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={goToLogIn} className="w-[154px] h-[38px] left-[119px] top-[706px] absolute bg-teal-500 rounded-2xl justify-center items-center">
+    <TouchableOpacity onPress={handleLogout} className="w-[154px] h-[38px] left-[119px] top-[706px] absolute bg-teal-500 rounded-2xl justify-center items-center">
         <Text className=" absolute text-white text-[16px] font-bold">{"Sign Out"}</Text>
     </TouchableOpacity>   
 </View>
