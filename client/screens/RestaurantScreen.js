@@ -14,19 +14,19 @@ export default function RestaurantScreen() {
     const navigation = useNavigation();
     let item = params;
     const dispatch = useDispatch()
-    useEffect(()=>{
-        if(item && item._id){
-            dispatch(setRestaurant({...item}))
+    useEffect(() => {
+        if (item && item._id) {
+            dispatch(setRestaurant({ ...item }))
         }
-    },[])
+    }, [])
     return (
         <View>
             <AddButtonCart />
-            <StatusBar style='light'/>
+            <StatusBar style='light' />
 
             <ScrollView>
                 <View className="relative">
-                    <Image className="w-full h-72" source={{uri:urlFor(item.image).url()}} />
+                    <Image className="w-full h-72" source={{ uri: urlFor(item.image).url() }} />
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         className="absolute top-14 left-4 bg-gray-50 p-2 rounded-full shadow">
@@ -51,9 +51,9 @@ export default function RestaurantScreen() {
                             </View>
                         </View>
                         <View className="flex-row items-center space-x-1">
-                                <Icon.MapPin color="gray" width="15" height="15" />
-                                <Text className="text-gray-700 text-xs">{item.address}</Text>
-                            </View>
+                            <Icon.MapPin color="gray" width="15" height="15" />
+                            <Text className="text-gray-700 text-xs">{item.address}</Text>
+                        </View>
                     </View>
                 </View>
                 <View className="pb-36 bg-white">

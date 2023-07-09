@@ -18,8 +18,16 @@ import { HomeIcon } from 'react-native-heroicons/solid';
 import { ShoppingCartIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
+import DepartmentScreen from './screens/DepartmentScreen'
 import useAuth from './hooks/useAuth';
 import { themeColors } from './theme';
+
+import ProfileUserScreen from './screens/ProfileUserScreen';
+import MyWalletScreen from './screens/MyWalletScreen';
+import AddWalletScreen from './screens/AddWalletScreen';
+import HelpCenterScreen from './screens/HelpCenter'
+import SettingScreen from './screens/SettingScreen'
+import NotificationSetting from './screens/NotificationSetting'
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -62,8 +70,8 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Danh Mục"
-                component={TutorialScreen}
+                name="Danh mục"
+                component={DepartmentScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
@@ -73,7 +81,7 @@ function MyTabs() {
             />
             <Tab.Screen
                 name="Tôi"
-                component={TutorialScreen}
+                component={ProfileUserScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
@@ -86,6 +94,7 @@ function MyTabs() {
     );
 }
 export default function Navigation() {
+
     const { user } = useAuth();
     if (user) {
         return (
@@ -100,6 +109,12 @@ export default function Navigation() {
                     <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
                     <Stack.Screen name="CartDetailHistory" options={{ presentation: 'fullScreenModal' }} component={CartDetailHistory} />
                     
+                    <Stack.Screen name="Notification" component={NotificationSetting}/>
+                    <Stack.Screen name="Setting" component={SettingScreen}/>
+                    <Stack.Screen name="Help" component={HelpCenterScreen}/>
+                    <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
+                    <Stack.Screen name="Wallet" component={MyWalletScreen}/>
+                    <Stack.Screen name="Department" component={DepartmentScreen}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
@@ -109,12 +124,15 @@ export default function Navigation() {
                 <Stack.Navigator initialRouteName="Intro" screenOptions={{
                     headerShown: false
                 }}>
-                    <Stack.Screen name="Intro" component={Intro} />
-                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name='SignUp' component={SignUpScreen} />
+                    <Stack.Screen name="Tutorial" component={TutorialScreen} />
+                    <Stack.Screen name="Intro" component={Intro} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
     }
+
+    
+
 }
