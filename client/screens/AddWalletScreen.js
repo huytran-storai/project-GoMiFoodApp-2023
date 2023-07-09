@@ -6,6 +6,7 @@ import { CheckBox } from 'react-native-elements';
 
 const { width, height } = Dimensions.get('window');
 export default function AddWalletScreen() {
+  
   const handleSubmit = () => {
     validateFields()
     // navigation.goBack()
