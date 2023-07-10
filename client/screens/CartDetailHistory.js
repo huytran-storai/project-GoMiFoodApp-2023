@@ -60,24 +60,57 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                         <Text style={styles.rate}>Thay đổi</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.bookAddress}>
-                    <View style={styles.textAddress}>
-                        <View style={styles.textAddressChild}>
-                            <MapPinIcon></MapPinIcon>
+                <View style={styles.bookListFood}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View className="flex-col">
                             <Text>
-                                01 Lê Quang Định, phường 7...
+                                Hủ Tiếu Sườn
+                            </Text>
+                            <Text className='font-light text-teal-700'>
+                                15.000 VND
                             </Text>
                         </View>
-                        <View style={styles.textAddressChild}>
-                            <MapPinIcon style={styles.textIcon2}></MapPinIcon>
+                        <View className='flex-row gap-3' style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity className='bg-teal-600 px-3 py-2' style={{ borderRadius: '10' }}>
+                                <Text className='font-bold text-white'>
+                                    -
+                                </Text>
+                            </TouchableOpacity>
                             <Text>
-                                03 Phan Văn Trị, phường 12...
+                                1
                             </Text>
+                            <TouchableOpacity className='bg-teal-600 px-3 py-2' style={{ borderRadius: '10' }}>
+                                <Text className='font-bold text-white'>
+                                    +
+                                </Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                    <TouchableOpacity style={styles.change}>
-                        <Text style={styles.rate}>Thay đổi</Text>
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View className="flex-col">
+                            <Text>
+                                Hủ Tiếu Chay
+                            </Text>
+                            <Text className='font-light text-teal-700'>
+                                15.000 VND
+                            </Text>
+                        </View>
+                        <View className='flex-row gap-3' style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity className='bg-teal-600 px-3 py-2' style={{ borderRadius: '10' }}>
+                                <Text className='font-bold text-white'>
+                                    -
+                                </Text>
+                            </TouchableOpacity>
+                            <Text>
+                                1
+                            </Text>
+                            <TouchableOpacity className='bg-teal-600 px-3 py-2' style={{ borderRadius: '10' }}>
+                                <Text className='font-bold text-white'>
+                                    +
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
                 <View style={styles.bookPay}>
                     <View style={styles.textAddressChild}>
@@ -99,7 +132,6 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-
                 <View style={styles.bookAddress}>
                     <View style={styles.textAddress}>
                         <View style={styles.textAddressChild}>
@@ -127,7 +159,7 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text>15.000 VND</Text>
+                                <Text>20.000 VND</Text>
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: '140' }}>
@@ -138,7 +170,7 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text>45.000 VND</Text>
+                                <Text>50.000 VND</Text>
                             </View>
                         </View>
 
@@ -150,7 +182,6 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-
         </>
     )
 }
@@ -221,6 +252,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         justifyContent: 'space-between',
         alignItems: 'center',
+        borderTopWidth: 1,
+        borderColor: '#bab5b8',
+        marginTop: 20,
+        paddingVertical: 10,
+        elevation: 1,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 3,
+    },
+    bookListFood: {
+        flexDirection: 'column',
+        gap:'20',
+        paddingHorizontal: 20,
         borderTopWidth: 1,
         borderColor: '#bab5b8',
         marginTop: 20,
