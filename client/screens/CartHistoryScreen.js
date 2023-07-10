@@ -27,7 +27,7 @@ const CartHistoryScreen = ({ navigation }) => {
                     </View>
                     <View style={styles.titleDetail}>
                         <Text className="font-semibold">{item.name}</Text>
-                        <Text className="font-medium text-[10px]">Tổng: {item.total}VND</Text>
+                        <Text className="font-medium text-[10px]">{item.total}VND (2 món)</Text>
                     </View>
                     <View>
                         <Text>12/08/2023 || 14:30</Text>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         gap: 10,
         position: 'absolute',
         bottom: 10,
-        left: -2,
+        right: 1,
     },
     btnDetail: {
         textAlign: 'center',
