@@ -1,9 +1,8 @@
 import { SafeAreaView, Dimensions, TouchableOpacity, View, Text, TextInput, StyleSheet, Image, ScrollView } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { CheckBox } from 'react-native-elements';
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
-const { width, height } = Dimensions.get('window');
 import DatePicker from 'react-native-datepicker';
 import { LogBox } from 'react-native';
 export default function AddWalletScreen() {
@@ -12,46 +11,26 @@ export default function AddWalletScreen() {
   }, [])
   const handleSubmit = () => {
     validateFields()
-
   }
 
-
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsChecked1(!isChecked1);
-    setIsChecked2(!isChecked2);
-    setIsChecked3(!isChecked3);
-  };
-  const toggleCheck1 = () => {
-    setIsChecked1(!isChecked1);
-  };
-
-  const toggleCheck2 = () => {
-    setIsChecked2(!isChecked2);
-  };
-
-  const toggleCheck3 = () => {
-    setIsChecked3(!isChecked3);
-  };
-
+  const [selectedIndex, setIndex] = React.useState(0);
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
   const [text3, setText3] = useState('');
-  const [text4, setText4] = useState('');
   const [text5, setText5] = useState('');
 
   const [textError, setTextError] = useState('');
   const [text2Error, setText2Error] = useState('');
   const [text3Error, setText3Error] = useState('');
-  const [text4Error, setText4Error] = useState('');
+
   const [date, setDate] = useState('01-01-2023');
   const [text5Error, setText5Error] = useState('');
 
   const handleChangeText = (inputText) => {
     setText(inputText);
+  };
+  const handleChangeText3 = (inputText) => {
+    setText3(inputText);
   };
   const handleChangeText2 = (inputText) => {
     setText2(inputText);
@@ -60,31 +39,10 @@ export default function AddWalletScreen() {
     setText5(inputText);
   };
   const validateFields = () => {
-    let isValid = true;
-    if (!isChecked1) {
-      isValid = false;
-    }
-    if (!isChecked2) {
-      isValid = false;
-    }
-    if (!isChecked3) {
-      isValid = false;
-    }
-    // Xác thực nam
-    const yearRegex = /^\d{4}$/;
-    if (text4.trim() === '') {
-      setText4Error('Vui lòng không để trống');
-      isValid = false;
-    } else if (!yearRegex.test(text4.trim())) {
-      setText4Error('Số năm không hợp lệ');
-      isValid = false;
-    } else {
-      setText4Error('');
-    };
     //xac thuc firstname
-    const firstnameRegex = /^[a-zA-Z\s]+$/;
+    const firstnameRegex = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
     if (text.trim() === '') {
-      setTextError('Vui lòng nhập tên');
+      setTextError('Vui lòng không để trống');
       isValid = false;
     } else if (!firstnameRegex.test(text.trim())) {
       setTextError('Tên chỉ được chứa chữ cái');
@@ -92,9 +50,9 @@ export default function AddWalletScreen() {
     } else {
       setTextError('');
     };
-    const lastnameRegex = /^[a-zA-Z\s]+$/;
+    const lastnameRegex = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
     if (text2.trim() === '') {
-      setText2Error('Vui lòng nhập họ');
+      setText2Error('Vui lòng không để trống');
       isValid = false;
     } else if (!lastnameRegex.test(text2.trim())) {
       setText2Error('Họ chỉ được chứa chữ');
@@ -161,47 +119,49 @@ export default function AddWalletScreen() {
             onChangeText={handleChangeText2} />
           {text2Error !== '' && <Text className="text-red-500 text-[15px]">{text2Error}</Text>}
         </View>
-        <Text className=" text-black mt-[25px] ml-2 text-[12.5px] font-semibold">Chọn thẻ tín dụng</Text>
-        <View className="w-[393px] h-[0px] mt-1 opacity-40 border border-black"></View>
-        <View className="flex-row space-x-4 mt-[10px]">
+        <View style={{ borderBottomColor: 'black', borderBottomWidth: '2' }} className="mx-5 mt-3">
+          <Text className="font-semibold text-[15px] mb-2">Chọn thẻ thanh toán</Text>
+        </View>
+        <View className="flex-col ml-3 my-5">
+          <View className="flex-row gap-20">
           <View className="flex-row items-center">
             <CheckBox
-              checked={isChecked1}
-              onPress={toggleCheck1}
-              onValueChange={handleCheckboxChange}
-              containerStyle={{ backgroundColor: 'transparent' }}
-            />
-
-            <Image className="w-10 h-10" source={require('../assets/images/Visa.png')} />
-          </View>
-          <View className="flex-row items-center">
-            <CheckBox
-              checked={isChecked2}
-              onPress={toggleCheck2}
-              onValueChange={handleCheckboxChange}
-              containerStyle={{ backgroundColor: 'transparent' }}
+              checked={selectedIndex === 0}
+              onPress={() => setIndex(0)}
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
             />
             <Image className="w-10 h-10" source={require('../assets/images/Mastercard.png')} />
           </View>
+          <View className="flex-row items-center">
+            <CheckBox
+              checked={selectedIndex === 1}
+              onPress={() => setIndex(1)}
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+            />
+            <Image className="w-10 h-10" source={require('../assets/images/Visa.png')} />
+          </View>
+          </View>
+          
+          <View className="flex-row items-center">
+            <CheckBox
+              checked={selectedIndex === 2}
+              onPress={() => setIndex(2)}
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+            />
+            <Image className="w-10 h-10" source={require('../assets/images/JCB.png')} />
+          </View>
         </View>
-        <View className="flex-row items-center">
-          <CheckBox
-            checked={isChecked3}
-            onPress={toggleCheck3}
-            onValueChange={handleCheckboxChange}
-            containerStyle={{ backgroundColor: 'transparent' }}
-          />
-          <Image className="w-10 h-10" source={require('../assets/images/JCB.png')} />
-        </View>
-
         <View className="flex-col justify-center mx-5 ">
           <Text className="font-semibold">Nhập mã số thẻ</Text>
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
             placeholderTextColor="black"
             autoCapitalize="none"
-            value={text}
-            onChangeText={handleChangeText} />
+            value={text3}
+            onChangeText={handleChangeText3} />
           {text3Error !== '' && <Text className="text-red-500 text-[15px]">{text3Error}</Text>}
         </View>
         <View className="flex-col justify-center mx-5 mt-5">
@@ -244,7 +204,6 @@ export default function AddWalletScreen() {
             }}
           />
         </View>
-
         <Text className=" text-black text-[12px] mt-[30px] ml-[55px] font-normal">CVN</Text>
         <View className=" mt-[5px] ml-[20px] rounded-2xl border-stone-500">
           <TextInput
