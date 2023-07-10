@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { CheckBox } from 'react-native-elements';
-
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 const { width, height } = Dimensions.get('window');
 export default function AddWalletScreen() {
   
@@ -164,7 +164,7 @@ export default function AddWalletScreen() {
     <SafeAreaView className="w-full h-full bg-white">
       <View className="flex-row space-x-[58px]">
       <TouchableOpacity onPress={goToMyWalletScreen} className="w-[35px] h-[35px] ml-[10px] text-center bg-teal-500 rounded-full justify-center items-center">
-          <Text className="text-[25px] mb-[4px] font-large text-white font-bold rounded-full">{"<"}</Text>
+      <ChevronLeftIcon style={{color:'white'}}></ChevronLeftIcon>
         </TouchableOpacity>
         <Text className=" mt-[10px] text-black text-center text-[14px] font-bold">Add Visa/Master/JCB Card</Text>
       </View>
