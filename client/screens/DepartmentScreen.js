@@ -7,7 +7,7 @@ export default function DepartmentScreen() {
     const renderItem = ({ item, index }) => {
         return (
 
-            <View className='ml-2'>
+            <View className='ml-2 h-full'>
                 <TouchableOpacity className="m-3 ">
                     <View>
                         <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className=" w-40 h-40  " source={item.image} resizeMode="cover">
