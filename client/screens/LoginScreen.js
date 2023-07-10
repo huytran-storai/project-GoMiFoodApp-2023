@@ -25,6 +25,7 @@ export default function LoginScreen() {
           ]);
 
         } catch (err) {
+          setIsLoading(true); 
           setErrorLogin('Sai mật khẩu hoặc email chưa chính xác!')
         }
       }
