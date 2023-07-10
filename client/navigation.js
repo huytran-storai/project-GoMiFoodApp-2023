@@ -15,7 +15,7 @@ import CartHistoryScreen from './screens/CartHistoryScreen';
 import CartDetailHistory from './screens/CartDetailHistory';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from 'react-native-heroicons/solid';
-import { ShoppingCartIcon } from 'react-native-heroicons/solid';
+import { ClipboardDocumentListIcon } from 'react-native-heroicons/solid';
 import { UserIcon } from 'react-native-heroicons/solid';
 import { ListBulletIcon } from 'react-native-heroicons/solid';
 import DepartmentScreen from './screens/DepartmentScreen'
@@ -55,11 +55,11 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Lịch sử"
+                name="Đơn Hàng"
                 component={CartHistoryScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <ShoppingCartIcon name="cart" color={color} size={size} />
+                        <ClipboardDocumentListIcon name="cart" color={color} size={size} />
                     ),
                     headerStyle: {
                         backgroundColor: themeColors.bg,
