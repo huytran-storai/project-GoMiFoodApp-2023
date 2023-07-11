@@ -72,7 +72,7 @@ const CartHistoryScreen = ({ navigation }) => {
                             </View>
                             {item.status === 'Đang đến' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={() => setModalVisible(true)}>
-                                    <Text className="text-[10px]" style={styles.btnReorder}>Trò chuyện</Text>
+                                    <Text className="text-[10px]" style={styles.btnReorder}>Theo dõi</Text>
                                 </TouchableOpacity>}
                                 {item.status === 'Đang tìm tài xế' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={() => setModalVisible(true)}>
