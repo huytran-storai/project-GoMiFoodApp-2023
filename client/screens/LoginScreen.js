@@ -74,7 +74,7 @@ export default function LoginScreen() {
             <View className="form space-y-2">
               <Text className="text-gray-700 ml-4">Email</Text>
               <TextInput
-                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
+                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${emailErrorLogin !== '' && 'border border-red-500'}`}
                 placeholder="Email"
                 value={email}
                 onChangeText={value => setEmail(value)}
@@ -82,7 +82,7 @@ export default function LoginScreen() {
               {emailErrorLogin !== '' && <Text className="text-red-500 ml-4">{emailErrorLogin}</Text>}
               <Text className="text-gray-700 ml-4">Mật khẩu</Text>
               <TextInput
-                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordErrorLogin !== '' && 'border border-red-500'}`}
                 secureTextEntry
                 placeholder="Mật Khẩu"
                 value={password}
