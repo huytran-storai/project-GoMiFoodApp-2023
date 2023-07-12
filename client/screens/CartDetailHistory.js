@@ -9,11 +9,17 @@ import { BanknotesIcon } from 'react-native-heroicons/solid';
 import { TruckIcon } from 'react-native-heroicons/solid';
 import { CurrencyDollarIcon } from 'react-native-heroicons/solid';
 
-const CartDetailHistory = ({ navigation: { goBack } }) => {
+const CartDetailHistory = ({ navigation }) => {
+    const goToDeLiVeRy = () => { 
+        navigation.navigate('OrderPrepairing');
+    }
+    const goBack = () =>{
+        navigation.goBack();
+    }
     return (
         <>
             <View style={styles.topHeader}>
-                <TouchableOpacity onPress={() => goBack()} style={styles.back}>
+                <TouchableOpacity onPress={goBack} style={styles.back}>
                     <ArrowLongLeftIcon style={styles.icon} />
                 </TouchableOpacity>
                 <Text style={styles.title}>Tiến hành đặt lại</Text>
@@ -177,7 +183,7 @@ const CartDetailHistory = ({ navigation: { goBack } }) => {
                     </View>
                 </View>
                 <View style={styles.btnOutside}>
-                    <TouchableOpacity style={styles.reorderBtn}>
+                    <TouchableOpacity style={styles.reorderBtn} onPress={goToDeLiVeRy}>
                         <Text style={styles.reorder}>Hoàn Tất</Text>
                     </TouchableOpacity>
                 </View>
