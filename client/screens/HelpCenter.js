@@ -8,7 +8,7 @@ export default function HelpCenter() {
         setText(inputText);
     };
     const goToProfileUser = () => {
-        navigation.navigate('Tôi');
+        navigation.navigate('MySetting');
     }
     const goToHomeScreen = () => {
         navigation.navigate('HomeTabs');

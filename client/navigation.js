@@ -46,17 +46,19 @@ function MyTabs() {
             }}
         >
             <Tab.Screen
-                name="Trang Chủ"
+                name="Home"
                 component={HomeScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <HomeIcon name="home" color={color} size={size} />
                     ),
+                    title:'Trang Chủ',
+                    
                 }}
             />
             <Tab.Screen
-                name="Đơn Hàng"
+                name="ListHistory"
                 component={CartHistoryScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
@@ -68,12 +70,14 @@ function MyTabs() {
                         borderBottomColor:'#fff',
                     },
                     headerTintColor: '#fff',
+                    title:'Đơn Hàng',
                 }}
             />
             <Tab.Screen
-                name="Danh mục"
+                name="Department"
                 component={DepartmentScreen}
                 options={{
+                    title:'Danh Mục',
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <ListBulletIcon name="favorite" color={color} size={size} />
@@ -81,9 +85,10 @@ function MyTabs() {
                 }}
             />
             <Tab.Screen
-                name="Tôi"
+                name="MySetting"
                 component={ProfileUserScreen}
                 options={{
+                    title:'Tôi',
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
                         <UserIcon name="profile" color={color} size={size} />
