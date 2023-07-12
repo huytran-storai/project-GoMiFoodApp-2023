@@ -6,20 +6,17 @@ import data from '../src/data'
 export default function DepartmentScreen() {
     const renderItem = ({ item, index }) => {
         return (
-           
-            <View className='ml-2 '>
+            <View className='ml-2'>
                 <TouchableOpacity className="m-3">
                     <View>
-                        <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className=" w-40 h-40  " source={item.image} resizeMode="cover">
+                        <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className="w-40 h-40" source={item.image} resizeMode="cover">
                         </ImageBackground>
                     </View>
                     <View className=' bg-teal-600 rounded-br-2xl rounded-bl-2xl'>
-                        <Text className='text-center text-white font-black text-lg   '>{item.name}</Text>
+                        <Text className='text-center text-white font-black text-lg'>{item.name}</Text>
                     </View>
                 </TouchableOpacity>
-
             </View>
-
         )
     }
     return (
@@ -29,18 +26,13 @@ export default function DepartmentScreen() {
                 <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
                     <Icon.Search height="25" width="25" stroke="gray" />
                     <TextInput placeholder='Restaurants' className="ml-2 flex-1" keyboardType='default' />
-                    <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-2 border-l-gray-300">
-                        <Icon.MapPin height="20" width="20" stroke="gray" />
-                        <Text className="text-gray-600">Ho Chi Minh,HCM</Text>
-                    </View>
                 </View>
-
-
             </View>
-            <FlatList 
-            contentContainerStyle={{
-                paddingBottom: 100
-            }}
+
+            <FlatList
+                contentContainerStyle={{
+                    paddingBottom: 100
+                }}
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
