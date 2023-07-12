@@ -28,6 +28,7 @@ import AddWalletScreen from './screens/AddWalletScreen';
 import HelpCenterScreen from './screens/HelpCenter'
 import SettingScreen from './screens/SettingScreen'
 import NotificationSetting from './screens/NotificationSetting'
+import ListYourWallet from './screens/ListYourWalletScreen'
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -115,6 +116,8 @@ export default function Navigation() {
                     <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
                     <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                     <Stack.Screen name="Department" component={DepartmentScreen}/>
+                    <Stack.Screen name="ListYourWallet" component={ListYourWallet}/>
+                    
                 </Stack.Navigator>
             </NavigationContainer>
         )
