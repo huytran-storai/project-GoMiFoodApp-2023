@@ -11,6 +11,9 @@ export default function MyWalletScreen() {
     const goToAddWalletScreen = () => {
         navigation.navigate('AddWallet');
     }
+    const goToListWalletScreen = () =>{
+        navigation.navigate('ListYourWallet')
+    }
 
     return (
         <SafeAreaView className="w-[393px] h-[852px] bg-white">
@@ -26,7 +29,7 @@ export default function MyWalletScreen() {
                 </TouchableOpacity>
             </View>
             <View className="w-[393px] h-[49px] mt-[10px] bg-white border border-stone-300 justify-center">
-                <TouchableOpacity onPress={goToAddWalletScreen} className="flex-row justify-between space-x-[130px] ml-[10px] ">
+                <TouchableOpacity onPress={goToListWalletScreen} className="flex-row justify-between space-x-[130px] ml-[10px] ">
                     <Text className="text-[15px] mt-[5px] font-large text-black font-bold">Danh sách thẻ tín dụng của bạn</Text>
                     <ChevronRightIcon style={{ color: 'black' }}></ChevronRightIcon>
                 </TouchableOpacity>

@@ -133,7 +133,7 @@ export default function SignUpScreen() {
                         <View className="form space-y-2">
                             <Text className="text-gray-700 ml-4">Họ và tên</Text>
                             <TextInput
-                                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${fullNameError !== '' && 'border border-red-500'}`}
                                 value={fullName}
                                 onChangeText={setFullName}
                                 placeholder='Họ và tên'
@@ -141,7 +141,7 @@ export default function SignUpScreen() {
                             {fullNameError !== '' && <Text className="text-red-500 ml-4">{fullNameError}</Text>}
                             <Text className="text-gray-700 ml-4">Địa chỉ email</Text>
                             <TextInput
-                                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${emailError !== '' && 'border border-red-500'}`}
                                 value={email}
                                 onChangeText={value => setEmail(value)}
                                 placeholder='Địa chỉ email'
@@ -149,7 +149,7 @@ export default function SignUpScreen() {
                             {emailError !== '' && <Text className="text-red-500 ml-4">{emailError}</Text>}
                             <Text className="text-gray-700 ml-4">Số điện thoại</Text>
                             <TextInput
-                                className="p-4 bg-gray-100 text-gray-700 rounded-2xl"
+                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${phoneNumberError !== '' && 'border border-red-500'}`}
                                 value={phoneNumber}
                                 onChangeText={setPhoneNumber}
                                 placeholder='Số điện thoại'
@@ -157,7 +157,7 @@ export default function SignUpScreen() {
                             {phoneNumberError !== '' && <Text className="text-red-500 ml-4">{phoneNumberError}</Text>}
                             <Text className="text-gray-700 ml-4">Mật Khẩu</Text>
                             <TextInput
-                                className="p-4 bg-gray-100 text-gray-700 rounded-2xl "
+                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordError !== '' && 'border border-red-500'}`}
                                 secureTextEntry
                                 value={password}
                                 onChangeText={value => setPassword(value)}
@@ -166,7 +166,7 @@ export default function SignUpScreen() {
                             {passwordError !== '' && <Text className="text-red-500 ml-4">{passwordError}</Text>}
                             <Text className="text-gray-700 ml-4">Nhập Mật Khẩu Lần 2</Text>
                             <TextInput
-                                className="p-4 bg-gray-100 text-gray-700 rounded-2xl "
+                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordVerifyError !== '' && 'border border-red-500'}`}
                                 secureTextEntry
                                 value={passwordVerify}
                                 onChangeText={setPasswordVerify}

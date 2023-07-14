@@ -1,7 +1,6 @@
-import { SafeAreaView, Dimensions, TouchableOpacity, View, Text, TextInput, Image, ScrollView } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import {TouchableOpacity, View, Text, TextInput,ScrollView } from 'react-native'
+import React, {useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-const { width, height } = Dimensions.get('window');
 export default function HelpCenter() {
     const navigation = useNavigation();
     const [text, setText] = useState('');
@@ -9,7 +8,7 @@ export default function HelpCenter() {
         setText(inputText);
     };
     const goToProfileUser = () => {
-        navigation.navigate('Tôi');
+        navigation.navigate('MySetting');
     }
     const goToHomeScreen = () => {
         navigation.navigate('HomeTabs');
@@ -56,11 +55,12 @@ export default function HelpCenter() {
                             multiline={true}
                             numberOfLines={1}
                             textAlignVertical="top"
+                            value={text}
                         />
                     </View>
                     <View>
                         <TouchableOpacity onPress={goToProfileUser} className="w-[135px] h-[48px] mt-[10px] ml-[128px] bg-teal-500 rounded-2xl justify-center items-center">
-                            <Text className=" absolute text-white text-[16px] font-bold">{"Submit"}</Text>
+                            <Text className=" absolute text-white text-[16px] font-bold">Submit</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>

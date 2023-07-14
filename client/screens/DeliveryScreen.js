@@ -24,13 +24,13 @@ export default function DeliveryScreen() {
                 <View className="flex-row justify-between px-5 pt-10">
                     <View>
                         <Text className="text-lg text-gray-700 font-semibold">
-                            Estimated Arrival
+                            Thời gian ước tính đến với bạn
                         </Text>
                         <Text className="text-3xl font-extrabold text-gray-700">
-                            20-30 Minutes
+                            20-30 Phút
                         </Text>
                         <Text className="mt-2 text-gray-700 font-semibold">
-                            Your order is on its way!
+                           Đơn hàng đang trên đường đến
                         </Text>
                     </View>
                     <Image className="w-24 h-24" source={require('../assets/images/bikeGuy2.gif')} />
@@ -44,7 +44,7 @@ export default function DeliveryScreen() {
                             Hao Phan
                         </Text>
                         <Text className="font-semibold text-white">
-                            Your Rider
+                            Tài Xế
                         </Text>
                     </View>
                     <View className="flex-row items-center space-x-3 mr-3">

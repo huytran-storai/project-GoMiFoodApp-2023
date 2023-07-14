@@ -1,5 +1,5 @@
 import { SafeAreaView, Dimensions, TouchableOpacity, View, Text, TextInput, StyleSheet, Image, ScrollView } from 'react-native'
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { CheckBox } from 'react-native-elements';
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
@@ -103,17 +103,18 @@ export default function AddWalletScreen() {
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
             placeholderTextColor="black"
+            className={`${textError !== '' && 'border border-red-500'}`}
             autoCapitalize="none"
             value={text}
             onChangeText={handleChangeText} />
           {textError !== '' && <Text className="text-red-500 text-[15px]">{textError}</Text>}
         </View>
-
         <View className="flex-col justify-center mx-5 mt-2">
           <Text className="font-semibold">Họ của bạn</Text>
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
             placeholderTextColor="black"
+            className={`${text2Error !== '' && 'border border-red-500'}`}
             autoCapitalize="none"
             value={text2}
             onChangeText={handleChangeText2} />
@@ -159,6 +160,7 @@ export default function AddWalletScreen() {
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
             placeholderTextColor="black"
+            className={`${text3Error !== '' && 'border border-red-500'}`}
             autoCapitalize="none"
             value={text3}
             onChangeText={handleChangeText3} />
@@ -173,9 +175,9 @@ export default function AddWalletScreen() {
             date={date}
             mode="date"
             placeholder="select date"
-            format="DD/MM/YYYY"
-            minDate="01-01-1900"
-            maxDate="01-01-2050"
+            format="MM/YYYY"
+            minDate="01-1900"
+            maxDate="01-2050"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{
@@ -208,14 +210,14 @@ export default function AddWalletScreen() {
         <View className=" mt-[5px] ml-[20px] rounded-2xl border-stone-500">
           <TextInput
             onChangeText={handleChangeText5}
-            className="w-[100px] h-[30px] bg-white text-black text-center rounded-2xl border border-stone-500"
+            className={`w-[100px] h-[30px] bg-white text-black text-center rounded-2xl border border-stone-500 ${text5Error !== '' && 'border border-red-500'}`}
             value={text5}>
           </TextInput>
           {text5Error !== '' && <Text className="text-red-500 text-[15px]">{text5Error}</Text>}
         </View>
         <View className="justify-center items-center mt-[10px]">
           <TouchableOpacity onPress={handleSubmit} className="w-[135px] h-[48px] mb-[10px] bg-teal-500 rounded-2xl justify-center items-center">
-            <Text className=" text-white text-[16px] font-bold">{"Submit"}</Text>
+            <Text className=" text-white text-[16px] font-bold">Hoàn Tất</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
