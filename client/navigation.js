@@ -21,7 +21,7 @@ import { ListBulletIcon } from 'react-native-heroicons/solid';
 import DepartmentScreen from './screens/DepartmentScreen'
 import useAuth from './hooks/useAuth';
 import { themeColors } from './theme';
-
+import DeleteAccount from './screens/DeleteAccountScreen'
 import ProfileUserScreen from './screens/ProfileUserScreen';
 import MyWalletScreen from './screens/MyWalletScreen';
 import AddWalletScreen from './screens/AddWalletScreen';
@@ -115,6 +115,7 @@ export default function Navigation() {
                     <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
                     <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                     <Stack.Screen name="Department" component={DepartmentScreen}/>
+                    <Stack.Screen name="DeleteAccount" component={DeleteAccount}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
