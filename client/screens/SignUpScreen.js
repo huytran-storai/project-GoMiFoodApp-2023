@@ -18,6 +18,7 @@ export default function SignUpScreen() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVerify, setPasswordVerify] = useState('');
+    //mange state for validation
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [passwordVerifyError, setPasswordVerifyError] = useState('');
