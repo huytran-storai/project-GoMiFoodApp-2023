@@ -7,8 +7,8 @@ const { width, height } = Dimensions.get('window');
 
 export default function SettingScreen(){
     const navigation = useNavigation();
-    const goToTermOfService = () => {
-        navigation.navigate('Login');
+    const goToPassword = () => {
+        navigation.navigate('PasswordSetting');
     }
     const goToProfileUserScreen = () => {
         navigation.navigate('HomeTabs');
@@ -66,7 +66,7 @@ return(
     </TouchableOpacity>
     </View>
     <View className="w-[393px] h-[49px] bg-white border border-stone-300">
-    <TouchableOpacity onPress={goToNotiSetting} className="w-[150px] h-[40px] justify-center">
+    <TouchableOpacity onPress={goToPassword} className="w-[150px] h-[40px] justify-center">
         <Text className="text-black mt-[10px] ml-[10px] text-[15px]">{"Mật Khẩu"}</Text>
     </TouchableOpacity>
     </View>
