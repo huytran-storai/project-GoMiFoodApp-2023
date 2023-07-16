@@ -19,6 +19,9 @@ export default function SettingScreen(){
     const goToDeleteAccount = () => {
         navigation.navigate('DeleteAccount');
     }
+    const goToUserInfo = () => {
+        navigation.navigate('UserInfo');
+    }
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -61,7 +64,7 @@ return(
     </View>
     <View className="w-[393px] h-[0px] mt-[9px] opacity-40 border border-black"></View>
     <View className="w-[393px] h-[49px] bg-white border border-stone-300">
-    <TouchableOpacity onPress={goToNotiSetting} className="w-[150px] h-[40px] justify-center">
+    <TouchableOpacity onPress={goToUserInfo} className="w-[150px] h-[40px] justify-center">
         <Text className="text-black mt-[10px] ml-[10px] text-[15.5px]">{"Thông tin cá nhân"}</Text>
     </TouchableOpacity>
     </View>

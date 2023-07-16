@@ -30,6 +30,7 @@ import SettingScreen from './screens/SettingScreen'
 import NotificationSetting from './screens/NotificationSetting'
 import ListYourWallet from './screens/ListYourWalletScreen'
 import PasswordSetting from './screens/PasswordSettingScreen';
+import UserInfo from './screens/UserInfoScreen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -125,6 +126,7 @@ export default function Navigation() {
                     <Stack.Screen name="ListYourWallet" component={ListYourWallet}/>
                     <Stack.Screen name="DeleteAccount" component={DeleteAccount}/>
                     <Stack.Screen name="PasswordSetting" component={PasswordSetting}/>
+                    <Stack.Screen name="UserInfo" component={UserInfo}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
