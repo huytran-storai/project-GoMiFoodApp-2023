@@ -7,14 +7,20 @@ const { width, height } = Dimensions.get('window');
 
 export default function SettingScreen(){
     const navigation = useNavigation();
-    const goToTermOfService = () => {
-        navigation.navigate('Login');
+    const goToPassword = () => {
+        navigation.navigate('PasswordSetting');
     }
     const goToProfileUserScreen = () => {
         navigation.navigate('HomeTabs');
     }
     const goToNotiSetting = () => {
         navigation.navigate('Notification');
+    }
+    const goToDeleteAccount = () => {
+        navigation.navigate('DeleteAccount');
+    }
+    const goToUserInfo = () => {
+        navigation.navigate('UserInfo');
     }
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -58,12 +64,12 @@ return(
     </View>
     <View className="w-[393px] h-[0px] mt-[9px] opacity-40 border border-black"></View>
     <View className="w-[393px] h-[49px] bg-white border border-stone-300">
-    <TouchableOpacity onPress={goToNotiSetting} className="w-[150px] h-[40px] justify-center">
+    <TouchableOpacity onPress={goToUserInfo} className="w-[150px] h-[40px] justify-center">
         <Text className="text-black mt-[10px] ml-[10px] text-[15.5px]">{"Thông tin cá nhân"}</Text>
     </TouchableOpacity>
     </View>
     <View className="w-[393px] h-[49px] bg-white border border-stone-300">
-    <TouchableOpacity onPress={goToNotiSetting} className="w-[150px] h-[40px] justify-center">
+    <TouchableOpacity onPress={goToPassword} className="w-[150px] h-[40px] justify-center">
         <Text className="text-black mt-[10px] ml-[10px] text-[15px]">{"Mật Khẩu"}</Text>
     </TouchableOpacity>
     </View>
@@ -73,7 +79,7 @@ return(
     </TouchableOpacity>
     </View>
     <View className="w-[393px] h-[49px] bg-white border border-stone-300">
-    <TouchableOpacity onPress={goToNotiSetting} className="w-[150px] h-[40px] justify-center">
+    <TouchableOpacity onPress={goToDeleteAccount} className="w-[150px] h-[40px] justify-center">
         <Text className="text-black mt-[10px] ml-[10px] text-[15px]">{"Xoá tài khoản"}</Text>
     </TouchableOpacity>
     </View>

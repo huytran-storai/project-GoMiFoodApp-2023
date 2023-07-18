@@ -21,6 +21,7 @@ import { ListBulletIcon } from 'react-native-heroicons/solid';
 import DepartmentScreen from './screens/DepartmentScreen'
 import useAuth from './hooks/useAuth';
 import { themeColors } from './theme';
+import DeleteAccount from './screens/DeleteAccountScreen'
 import ProfileUserScreen from './screens/ProfileUserScreen';
 import MyWalletScreen from './screens/MyWalletScreen';
 import AddWalletScreen from './screens/AddWalletScreen';
@@ -28,6 +29,8 @@ import HelpCenterScreen from './screens/HelpCenter'
 import SettingScreen from './screens/SettingScreen'
 import NotificationSetting from './screens/NotificationSetting'
 import ListYourWallet from './screens/ListYourWalletScreen'
+import PasswordSetting from './screens/PasswordSettingScreen';
+import UserInfo from './screens/UserInfoScreen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -120,6 +123,10 @@ export default function Navigation() {
                     <Stack.Screen name="AddWallet" component={AddWalletScreen}/>
                     <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                     <Stack.Screen name="Department" component={DepartmentScreen}/>
+                    <Stack.Screen name="ListYourWallet" component={ListYourWallet}/>
+                    <Stack.Screen name="DeleteAccount" component={DeleteAccount}/>
+                    <Stack.Screen name="PasswordSetting" component={PasswordSetting}/>
+                    <Stack.Screen name="UserInfo" component={UserInfo}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
