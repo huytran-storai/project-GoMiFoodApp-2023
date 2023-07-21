@@ -12,7 +12,7 @@ export default function addButtonCart() {
     const cartTotal = useSelector(selectCartTotal);
     if (!cartItems.length) return;
     return (
-        <View className="absolute bottom-5 w-full z-50">
+        <View className="bottom-5 w-full z-50 absolute">
             <TouchableOpacity
                 onPress={() => navigation.navigate('Cart')}
                 style={{ backgroundColor: themeColors.bgColor(1) }}
@@ -26,7 +26,7 @@ export default function addButtonCart() {
                     Xem giỏ hàng
                 </Text>
                 <Text className="font-extrabold text-white text-lg">
-                    {cartTotal} VND
+                    {cartTotal.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                 </Text>
             </TouchableOpacity>
         </View>
