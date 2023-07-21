@@ -10,13 +10,22 @@ import { useMemo } from 'react';
 import { urlFor } from "../sanity";
 
 export default function CartScreen() {
+    const dispatch = useDispatch();
     const restaurant = useSelector(selectRestaurant)
     const navigation = useNavigation();
     const cartItems = useSelector(selectCart);
     const cartTotal = useSelector(selectCartTotal);
     const [groupedItems, setGroupedItems] = useState({});
-    const deliveryFee = 15000;
-    const dispatch = useDispatch();
+
+    const deliveryFee = {
+        price: 15000
+    };
+    const formattedFeePrice = deliveryFee.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    const formattedTotalPrice = cartTotal.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    const feePriceNumber = parseInt(formattedFeePrice.replaceAll('.', '').replace('đ', ''));
+    const totalPriceNumber = parseInt(formattedTotalPrice.replaceAll('.', '').replace('đ', ''));
+    const totalNumber = feePriceNumber + totalPriceNumber;
+    const total = totalNumber.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
     useMemo(() => {
         const items = cartItems.reduce((group, item) => {
@@ -86,7 +95,7 @@ export default function CartScreen() {
                                 </Text>
                                 <Image className="h-14 w-14 rounded-full" source={{ uri: urlFor(items[0]?.image).url() }} />
                                 <Text className="flex-1 font-bold text-gray-700">{items[0]?.name}</Text>
-                                <Text className="font-semibold text-base">{items[0]?.price} VND</Text>
+                                <Text className="font-semibold text-base">{items[0]?.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</Text>
                                 <TouchableOpacity className="p-1 rounded-full"
                                     onPress={() => dispatch(removeFromCart({ id: items[0]?._id }))}
                                     style={{ backgroundColor: themeColors.bgColor(1) }}>
@@ -102,16 +111,16 @@ export default function CartScreen() {
             <View style={{ backgroundColor: themeColors.bgColor(0.2) }} className="p-6 px-8 rounded-t-3xl space-y-4">
                 <View className="flex-row justify-between">
                     <Text className="text-gray-700 text-base">Tổng cộng ({cartItems.length} Món)</Text>
-                    <Text className="text-gray-700 text-base">{cartTotal} VND</Text>
+                    <Text className="text-gray-700 text-base">{formattedTotalPrice}</Text>
                 </View>
                 <View className="flex-row justify-between">
                     <Text className="text-gray-700 text-base">Phí giao hàng</Text>
-                    <Text className="text-gray-700 text-base">{deliveryFee} VND</Text>
+                    <Text className="text-gray-700 text-base">{formattedFeePrice}</Text>
                 </View>
                 <View className="border-b"></View>
                 <View className="flex-row justify-between">
                     <Text className="text-gray-900 font-extrabold text-base">Tổng đơn hàng</Text>
-                    <Text className="text-gray-900 font-extrabold text-base">{deliveryFee + cartTotal} VND</Text>
+                    <Text className="text-gray-900 font-extrabold text-base">{total}</Text>
                 </View>
                 <View>
                     <TouchableOpacity
