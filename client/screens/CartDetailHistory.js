@@ -73,7 +73,7 @@ const CartDetailHistory = ({ navigation }) => {
                                 Hủ Tiếu Sườn
                             </Text>
                             <Text className='font-light text-teal-700'>
-                                15.000 VND
+                                15.000 đ
                             </Text>
                         </View>
                         <View className='flex-row gap-3' style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -98,7 +98,7 @@ const CartDetailHistory = ({ navigation }) => {
                                 Hủ Tiếu Chay
                             </Text>
                             <Text className='font-light text-teal-700'>
-                                15.000 VND
+                                15.000 đ
                             </Text>
                         </View>
                         <View className='flex-row gap-3' style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -154,7 +154,7 @@ const CartDetailHistory = ({ navigation }) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text>30.000 VND</Text>
+                                <Text>30.000 đ</Text>
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: '140' }}>
@@ -165,7 +165,7 @@ const CartDetailHistory = ({ navigation }) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text>20.000 VND</Text>
+                                <Text>20.000 đ</Text>
                             </View>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: '140' }}>
@@ -176,7 +176,7 @@ const CartDetailHistory = ({ navigation }) => {
                                 </Text>
                             </View>
                             <View>
-                                <Text>50.000 VND</Text>
+                                <Text>50.000 đ</Text>
                             </View>
                         </View>
 

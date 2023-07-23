@@ -5,13 +5,13 @@ import { themeColors } from "../theme";
 const CartHistoryScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const foodCart = [
-        { id: '1', name: "Dì Bảy", total: '50000', status: 'Đang giao' },
-        { id: '7', name: "Dì Bảy", total: '50000', status: 'Đang tìm tài xế' },
-        { id: '2', name: "Chú Ba", total: '90000', status: 'Đã hủy' },
-        { id: '3', name: "Chú Năm", total: '70000', status: 'Đang giao' },
-        { id: '4', name: "Cậu Ba", total: '50000', status: 'Đơn nháp' },
-        { id: '5', name: "Chị Hai", total: '40000', status: 'Đã hoàn tất' },
-        { id: '6', name: "Miko Lan Trinh", total: '40000', status: 'Đã hoàn tất' },
+        { id: '1', name: "Dì Bảy", total: 50000, status: 'Đang giao' },
+        { id: '7', name: "Dì Bảy", total: 50000, status: 'Đang tìm tài xế' },
+        { id: '2', name: "Chú Ba", total: 90000, status: 'Đã hủy' },
+        { id: '3', name: "Chú Năm", total: 70000, status: 'Đang giao' },
+        { id: '4', name: "Cậu Ba", total: 50000, status: 'Đơn nháp' },
+        { id: '5', name: "Chị Hai", total: 40000, status: 'Đã hoàn tất' },
+        { id: '6', name: "Miko Lan Trinh", total: 40000, status: 'Đã hoàn tất' },
     ];
 
     const goToDetail = () => {
@@ -62,7 +62,7 @@ const CartHistoryScreen = ({ navigation }) => {
                     </View>
                     <View style={styles.titleDetail}>
                         <Text className="font-semibold">{item.name}</Text>
-                        <Text className="font-medium text-[10px]">{item.total}VND (2 món)</Text>
+                        <Text className="font-medium text-[10px]">{item.total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} (2 món)</Text>
                     </View>
                     <View>
                         <Text>12/08/2023 || 14:30</Text>
