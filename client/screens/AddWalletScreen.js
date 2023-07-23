@@ -231,6 +231,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     marginTop: "3%",
-    borderRadius: 10
+    borderRadius: 10,
   }
 })

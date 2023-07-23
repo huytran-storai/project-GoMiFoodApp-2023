@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
         backgroundColor: themeColors.bg,
         paddingVertical: 40,
         borderBottomColor: '#bab5b8',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
     },
     title: {
         fontSize: 20,
@@ -215,14 +215,14 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         padding: 5,
         backgroundColor: 'white',
-        borderRadius: 10
+        borderRadius: 10,
     },
     icon: {
         color: 'black',
     },
     rate: {
         color: themeColors.bg,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     bookDesc: {
         flexDirection: 'row',
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     },
     titleRes: {
         fontWeight: 'bold',
-        marginRight: 90
+        marginRight: 90,
     },
     bookAddress: {
         flexDirection: 'row',
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     },
     bookListFood: {
         flexDirection: 'column',
-        gap:'20',
+        gap: 20,
         paddingHorizontal: 20,
         borderTopWidth: 1,
         borderColor: '#bab5b8',
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 10
+        marginTop: 10,
     },
     textAddress: {
         flexDirection: 'column',
@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     textAddressChild: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 5
+        gap: 5,
 
     },
     reorderBtn: {
@@ -310,17 +310,17 @@ const styles = StyleSheet.create({
         backgroundColor: themeColors.bg,
         marginTop: 10,
         width: '50%',
-        borderRadius: 10
+        borderRadius: 10,
     },
     reorder: {
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
     },
     btnOutside: {
         flexDirection: 'row',
         justifyContent: "center",
-        marginBottom: 30
+        marginBottom: 30,
     }
-})
+});
 export default CartDetailHistory;

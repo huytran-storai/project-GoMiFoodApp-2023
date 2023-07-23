@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View, Text, StyleSheet, FlatList, TouchableOpacity, Modal,Pressable } from 'react-native';
+import { Image, View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, Pressable } from 'react-native';
 import { themeColors } from "../theme";
 
 const CartHistoryScreen = ({ navigation }) => {
@@ -32,18 +32,18 @@ const CartHistoryScreen = ({ navigation }) => {
                         <View style={styles.modalView}>
                             <Text style={styles.modalText}>Bạn có muốn hủy đơn hàng này không?</Text>
                             <View className="flex-row gap-4">
-                            <Pressable
-                                style={[styles.button, styles.buttonOpen]}
-                                onPress={() => setModalVisible(!modalVisible)}>
-                                <Text style={styles.textStyle}>Có</Text>
-                            </Pressable>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)}>
-                                <Text style={styles.textStyle}>Không</Text>
-                            </Pressable>
+                                <Pressable
+                                    style={[styles.button, styles.buttonOpen]}
+                                    onPress={() => setModalVisible(!modalVisible)}>
+                                    <Text style={styles.textStyle}>Có</Text>
+                                </Pressable>
+                                <Pressable
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={() => setModalVisible(!modalVisible)}>
+                                    <Text style={styles.textStyle}>Không</Text>
+                                </Pressable>
                             </View>
-                            
+
                         </View>
                     </View>
                 </Modal>
@@ -74,19 +74,19 @@ const CartHistoryScreen = ({ navigation }) => {
                                 <TouchableOpacity style={styles.btnRe} onPress={() => setModalVisible(true)}>
                                     <Text className="text-[10px]" style={styles.btnReorder}>Theo dõi</Text>
                                 </TouchableOpacity>}
-                                {item.status === 'Đang tìm tài xế' &&
+                            {item.status === 'Đang tìm tài xế' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={() => setModalVisible(true)}>
                                     <Text className="text-[10px]" style={styles.btnReorder}>Hủy</Text>
                                 </TouchableOpacity>}
-                                {item.status === 'Đã hủy' &&
+                            {item.status === 'Đã hủy' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={goToDetail}>
                                     <Text className="text-[10px]" style={styles.btnReorder}>Đặt lại</Text>
                                 </TouchableOpacity>}
-                                {item.status === 'Đơn nháp' &&
+                            {item.status === 'Đơn nháp' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={goToDetail}>
                                     <Text className="text-[10px]" style={styles.btnReorder}>Tiếp tục</Text>
                                 </TouchableOpacity>}
-                                {item.status === 'Đã hoàn tất' &&
+                            {item.status === 'Đã hoàn tất' &&
                                 <TouchableOpacity style={styles.btnRe} onPress={goToDetail}>
                                     <Text className="text-[10px]" style={styles.btnReorder}>Đặt lại</Text>
                                 </TouchableOpacity>}
@@ -111,13 +111,13 @@ const styles = StyleSheet.create({
     },
     titleDetail: {
         flexDirection: 'column',
-        gap: 20
+        gap: 20,
     },
     topTitle: {
         paddingVertical: 10,
         borderBottomWidth: 1,
         borderBottomColor: 'black',
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
     textTitle: {
         fontWeight: 'bold',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'grey',
         flexDirection: 'row',
-        gap: 20
+        gap: 20,
     },
     btn: {
         flexDirection: 'row',
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 22,
-      },
-      modalView: {
+    },
+    modalView: {
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
@@ -175,35 +175,35 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
-          width: 0,
-          height: 2,
+            width: 0,
+            height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-      },
-      button: {
+    },
+    button: {
         borderRadius: 20,
         padding: 10,
         elevation: 2,
-      },
-      buttonOpen: {
+    },
+    buttonOpen: {
         backgroundColor: 'green',
-        width:'30%'
-      },
-      buttonClose: {
+        width: '30%',
+    },
+    buttonClose: {
         backgroundColor: 'red',
-        width:'30%'
-      },
-      textStyle: {
+        width: '30%'
+    },
+    textStyle: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
-      },
-      modalText: {
+    },
+    modalText: {
         marginBottom: 15,
         textAlign: 'center',
-      },
-})
+    },
+});
 
 export default CartHistoryScreen;
