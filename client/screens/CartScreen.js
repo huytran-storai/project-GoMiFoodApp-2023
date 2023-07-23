@@ -18,6 +18,10 @@ export default function CartScreen() {
     const deliveryFee = 15000;
     const dispatch = useDispatch();
 
+    const changePayment = () => {
+        navigation.navigate('ChangePayment')
+    }
+
     useMemo(() => {
         const items = cartItems.reduce((group, item) => {
             if (group[item._id]) {
@@ -32,6 +36,7 @@ export default function CartScreen() {
         }
         setGroupedItems(items);
     }, [cartItems, navigation])
+
     return (
         <View className="bg-white flex-1">
             {/* back button */}
@@ -52,7 +57,7 @@ export default function CartScreen() {
                 className="flex-row px-4 items-center mb-5">
                 <Image source={require('../assets/images/Rectangle.jpg')} className="w-20 h-49 m-1 rounded-full" />
                 <Text className="flex-1 pl-4">**4393</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={changePayment}>
                     <Text className="font-bold" style={{ color: themeColors.text }}>
                         Thay đổi
                     </Text>
