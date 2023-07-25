@@ -6,8 +6,11 @@ import { getCategories } from '../api';
 import { themeColors } from '../theme'
 
 
-export default function DepartmentScreen() {
+export default function DepartmentScreen({navigation}) {
     const [Categories, setCategorie] = useState ([])
+    const goToDetail = () => {
+        navigation.navigate('DetailDepartment')
+    }
     useEffect(()=>{
         getCategories().then(data =>{
             setCategorie(data)
@@ -16,7 +19,9 @@ export default function DepartmentScreen() {
     const renderItem = ({item, index }) => {
         return (
             <View className='ml-2'>
-                <TouchableOpacity className="m-3">
+                <TouchableOpacity className="m-3"
+                onPress={goToDetail}
+                >
                     <View>
                         <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className="w-40 h-40" source={{uri: urlFor(item.image).url()}} resizeMode="cover">
                         </ImageBackground>
@@ -44,7 +49,6 @@ export default function DepartmentScreen() {
                 }}
                 data={Categories}
                 renderItem={renderItem}
-                keyExtractor={item => `${item.id}`}
                 numColumns={2}
             />
         </SafeAreaView>
