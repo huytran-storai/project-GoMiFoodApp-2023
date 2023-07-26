@@ -33,6 +33,7 @@ import PasswordSetting from './screens/PasswordSettingScreen';
 import UserInfo from './screens/UserInfoScreen';
 import ChangePayment from './screens/ChangePaymentScreen';
 import DetailDepartmentScreen from './screens/DetailDepartmentScreen'
+import SearchScreen from './screens/SearchScreen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -131,6 +132,7 @@ export default function Navigation() {
                     <Stack.Screen name="UserInfo" component={UserInfo}/>
                     <Stack.Screen name="ChangePayment" component={ChangePayment} options={{ presentation: 'fullScreenModal' }}/>
                     <Stack.Screen name="DetailDepartment" component={DetailDepartmentScreen}/>
+                    <Stack.Screen name="Search" component={SearchScreen}/>
                     
                 </Stack.Navigator>
             </NavigationContainer>

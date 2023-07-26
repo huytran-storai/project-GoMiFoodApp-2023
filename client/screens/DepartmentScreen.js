@@ -11,6 +11,9 @@ export default function DepartmentScreen({navigation}) {
     const goToDetail = () => {
         navigation.navigate('DetailDepartment')
     }
+    const goToSearch =() =>{
+        navigation.navigate('Search')
+    }
     useEffect(()=>{
         getCategories().then(data =>{
             setCategorie(data)
@@ -36,13 +39,15 @@ export default function DepartmentScreen({navigation}) {
     return (
         <SafeAreaView className="bg-white ">
             <Text className="text-[20px] bottom-[5px] font-large text-center font-bold rounded-full p-3">Danh Mục</Text>
+        <TouchableOpacity
+        onPress={goToSearch}>
             <View className="flex-row items-center space-x-2 px-4 pb-2 ">
                 <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
                     <Icon.Search height="25" width="25" stroke="gray" />
                     <TextInput placeholder='tìm món ăn' className="ml-2 flex-1" keyboardType='default' />
                 </View>
             </View>
-
+        </TouchableOpacity> 
             <FlatList
                 contentContainerStyle={{
                     paddingBottom: 100

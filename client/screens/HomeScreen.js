@@ -8,8 +8,12 @@ import  Categories  from '../components/categories';
 import { getFeaturedRestaurants } from '../api';
 import { themeColors } from '../theme';
 
-export default function HomeScreen() {
+
+export default function HomeScreen({navigation}) {
     const [featuredRestaurants, setFeaturedRestaurants] = useState ([])
+    const goTosearch = () => {
+        navigation.navigate('Search')
+    }
     useEffect(()=>{
         getFeaturedRestaurants().then(data =>{
             setFeaturedRestaurants(data)
@@ -22,16 +26,21 @@ export default function HomeScreen() {
                 barStyle="dark-content"
             />
             {/* search bar */}
+            <TouchableOpacity
+            onPress={goTosearch}>
             <View className="flex-row items-center space-x-2 px-4 pb-2 ">
                 <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
+                
                     <Icon.Search height="25" width="25" stroke="gray" />
-                    <TextInput placeholder='Restaurants...' className="ml-2 flex-1" keyboardType='default' />
+                    <TextInput placeholder='Restaurants...' className="ml-2 flex-1" keyboardType='default'/>
+                    
                     <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-2 border-l-gray-300">
                         <Icon.MapPin height="20" width="20" stroke="gray" />
                         <Text className="text-gray-600">Ho Chi Minh,HCM</Text>
                     </View>
                 </View>
             </View>
+            </TouchableOpacity>
             {/* main */}
             <ScrollView
                 showsVerticalScrollIndicator={false}
