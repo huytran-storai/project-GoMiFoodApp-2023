@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, Text, TouchableOpacity, View, TextInput, Alert } from 'react-native'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
@@ -29,6 +29,11 @@ export default function CartScreen() {
 
     const changePayment = () => {
         navigation.navigate('ChangePayment')
+    }
+    const changeNote = () =>{
+        Alert.alert('Ghi chú thành công!', 'Cảm ơn bạn', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
     }
 
     useMemo(() => {
@@ -81,7 +86,18 @@ export default function CartScreen() {
                         Thay đổi
                     </Text>
                 </TouchableOpacity>
-
+            </View>
+            <View style={{ backgroundColor: themeColors.bgColor(0.2) }}
+                className="flex-row px-4 items-center mb-5 mt-5">
+                <TextInput
+                    className={`flex-1 p-8 bg-gray-100 text-gray-900 rounded-2xl pl-8`}
+                    placeholder='Ghi chú của bạn.....'
+                />
+                <TouchableOpacity onPress={changeNote}>
+                    <Text className="font-semibold ml-6" style={{ color: themeColors.text }}>
+                        Ghi chú
+                    </Text>
+                </TouchableOpacity>
             </View>
             {/* dishes */}
             <ScrollView
