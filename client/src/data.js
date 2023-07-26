@@ -1,43 +1,45 @@
 var data = [
     {
         id: 1,
-        name: 'Món Quốc Tế',
+        name: 'Bún Bò 1991',
         image: require('../assets/Category/image1.jpeg'),
+        check: require('../assets/Category/star.jpeg'),
+        number: '(4.4)',
+        address: '223 Le Quang Dinh',
     },
     {
         id: 2,
-        name: 'Bún- Phở',
+        name: 'Quán 239 Bún Bò ',
         image: require('../assets/Category/image2.jpeg'),
+        check: require('../assets/Category/star.jpeg'),
+        number: '(4.9)',
+        address: '223 Le Quang Dinh',
     },
     {
         id: 3,
-        name: 'Bánh Mì',
+        name: 'Bún đậu Mẹt Gánh',
         image: require('../assets/Category/image3.jpeg'),
+        check: require('../assets/Category/star.jpeg'),
+        number: '(4.5)',
+        address: '223 Le Quang Dinh',
+    
     },
     {
         id: 4,
-        name: 'Ăn Vặt',
+        name: 'Bún Chả 1986',
         image: require('../assets/Category/image4.jpeg'),
+        check: require('../assets/Category/star.jpeg'),
+        number: '(4.8)',
+        address: '223 Le Quang Dinh',
     },
     {
         id: 5,
-        name: 'Món Chay',
-        image: require('../assets/Category/image5.jpeg')
+        name: 'Bún thịt nướng 131',
+        image: require('../assets/Category/image5.jpeg'),
+        check: require('../assets/Category/star.jpeg'),
+        number: '(4.9)',
+        address: '223 Le Quang Dinh',
     },
-    {
-        id: 6,
-        name: 'Gà Rán - Burger',
-        image: require('../assets/Category/image6.jpeg'),
-    },
-    {
-        id: 7,
-        name: 'Trà sữa',
-        image: require('../assets/Category/image7.jpeg'),
-    },
-    {
-        id: 8,
-        name: 'Cơm',
-        image: require('../assets/Category/image8.jpeg'),
-    },
+    
 ];
 export default data;

@@ -32,8 +32,6 @@ export default function HomeScreen() {
                     </View>
                 </View>
             </View>
-
-
             {/* main */}
             <ScrollView
                 showsVerticalScrollIndicator={false}

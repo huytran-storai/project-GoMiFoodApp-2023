@@ -1,26 +1,19 @@
 import { SafeAreaView, TouchableOpacity, View, Text, ScrollView, TextInput, Image } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { Switch } from 'react-native-elements';
-
 
 export default function UserInfo() {
     const navigation = useNavigation();
-    const [text,setText] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVerify, setPasswordVerify] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [passwordVerifyError, setPasswordVerifyError] = useState('');
-    const [newpassword, setNewpassword] = useState('');
     const handleSubmit = () => {
         validateFields()
       }
     const goToSettingScreen = () => {
         navigation.navigate('Setting');
     }
-    const handleChangeText = (inputText) => {
-        setText(inputText);
-      };
     const validateFields = () => {
         let isValid = true;
  // Xác thực mật khẩu

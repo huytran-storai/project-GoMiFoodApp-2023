@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { SafeAreaView, View, FlatList, ImageBackground, TouchableOpacity, Text, TextInput, } from 'react-native';
 import * as Icon from "react-native-feather";
-import data from '../src/data'
+import { urlFor } from '../sanity'
+import { getCategories } from '../api';
+import { themeColors } from '../theme'
 
-export default function DepartmentScreen() {
-    const renderItem = ({ item, index }) => {
+
+export default function DepartmentScreen({navigation}) {
+    const [Categories, setCategorie] = useState ([])
+    const goToDetail = () => {
+        navigation.navigate('DetailDepartment')
+    }
+    useEffect(()=>{
+        getCategories().then(data =>{
+            setCategorie(data)
+        })
+    })
+    const renderItem = ({item, index }) => {
         return (
             <View className='ml-2'>
-                <TouchableOpacity className="m-3">
+                <TouchableOpacity className="m-3"
+                onPress={goToDetail}
+                >
                     <View>
-                        <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className="w-40 h-40" source={item.image} resizeMode="cover">
+                        <ImageBackground imageStyle={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }} className="w-40 h-40" source={{uri: urlFor(item.image).url()}} resizeMode="cover">
                         </ImageBackground>
                     </View>
                     <View className=' bg-teal-600 rounded-br-2xl rounded-bl-2xl'>
@@ -33,9 +47,8 @@ export default function DepartmentScreen() {
                 contentContainerStyle={{
                     paddingBottom: 100
                 }}
-                data={data}
+                data={Categories}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
                 numColumns={2}
             />
         </SafeAreaView>
