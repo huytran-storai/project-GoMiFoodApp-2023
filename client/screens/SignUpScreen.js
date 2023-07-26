@@ -35,7 +35,10 @@ export default function SignUpScreen() {
                         { text: 'OK', onPress: () => console.log('OK Pressed') },
                     ]);
                 } catch (err) {
-                    console.log('got error: ', err.message);
+                    Alert.alert('Đăng kí thất bại!', 'Tài khoản đã tồn tại', [
+                        { text: 'OK', onPress: () => console.log('OK Pressed') },
+                    ]);
+                    setIsLoading(true)
                 }
             }
         }
