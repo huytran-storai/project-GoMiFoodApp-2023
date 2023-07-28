@@ -1,7 +1,7 @@
 import {
     View, Text, TouchableOpacity, Image, TextInput,
     TouchableWithoutFeedback,
-    Keyboard, Alert, ActivityIndicator
+    Keyboard, Alert, ActivityIndicator,Switch
 } from 'react-native'
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -46,12 +46,12 @@ export default function SignUpScreen() {
     const validateFields = () => {
         let isValid = true;
         // Xác thực họ và tên
-        const nameRegex = /^[a-zA-Z\u00C0-\u00FF\s]+$/;
+        const nameRegex = /[A-Za-z]/;
         if (fullName.trim() === '') {
             setFullNameError('Vui lòng nhập họ và tên');
             isValid = false;
         } else if (!nameRegex.test(fullName.trim())) {
-            setFullNameError('Họ và tên chỉ được chứa chữ');
+            setFullNameError('Họ và tên nhập không hợp lệ');
             isValid = false;
         } else {
             setFullNameError('');
@@ -189,10 +189,7 @@ export default function SignUpScreen() {
                             </TouchableOpacity>
                         </View>
                         <View className="flex-row justify-center space-x-12 mt-4">
-                            <TouchableOpacity className="p-2 bg-gray-100 rounded-2xl">
-                                <Image source={require('../assets/google.png')}
-                                    className="w-10 h-10" />
-                            </TouchableOpacity>
+                        <Text className="text-gray-500">Mật khẩu tối thiểu tám ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt(@,$,%,!,~,*,^)</Text>
                         </View>
                         <View className="flex-row justify-center mt-7">
                             <Text className="text-gray-500 font-semibold">Bạn đã có tài khoản rồi?</Text>
