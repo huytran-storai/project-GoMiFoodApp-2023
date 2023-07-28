@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { signInWithEmailAndPassword } from '@firebase/auth';
+import { EyeIcon, EyeSlashIcon } from 'react-native-heroicons/solid';
 import { auth } from '../config/firebase';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 export default function LoginScreen() {
@@ -13,7 +14,11 @@ export default function LoginScreen() {
   const [passwordErrorLogin, setPasswordErrorLogin] = useState('');
   const [errorLogin, setErrorLogin] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isSecure, setIsSecure] = useState(true)
 
+  const toggleSecureTextEntry = () => {
+    setIsSecure(prevState => !prevState);
+  };
   const handleSubmit = async () => {
     if (validateFields()) {
       if (email && password) {
@@ -25,7 +30,7 @@ export default function LoginScreen() {
           ]);
 
         } catch (err) {
-          setIsLoading(true); 
+          setIsLoading(true);
           setErrorLogin('Sai mật khẩu hoặc email chưa chính xác!')
         }
       }
@@ -80,15 +85,20 @@ export default function LoginScreen() {
                 onChangeText={value => setEmail(value)}
               />
               {emailErrorLogin !== '' && <Text className="text-red-500 ml-4">{emailErrorLogin}</Text>}
-              <Text className="text-gray-700 ml-4">Mật khẩu</Text>
-              <TextInput
-                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordErrorLogin !== '' && 'border border-red-500'}`}
-                secureTextEntry
-                placeholder="Mật Khẩu"
-                value={password}
-                onChangeText={value => setPassword(value)}
-              />
-              {passwordErrorLogin !== '' && <Text className="text-red-500 ml-4">{passwordErrorLogin}</Text>}
+              <View>
+                <Text className="text-gray-700 ml-4">Mật khẩu</Text>
+                <TextInput
+                  className={`relative p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordErrorLogin !== '' && 'border border-red-500'}`}
+                  secureTextEntry={isSecure}
+                  placeholder="Mật Khẩu"
+                  value={password}
+                  onChangeText={value => setPassword(value)}
+                />
+                <TouchableOpacity className='absolute right-[10px] top-[30px]' onPress={toggleSecureTextEntry}>
+                  {isSecure ? <EyeIcon style={{ color: 'gray' }} /> : <EyeSlashIcon style={{ color: 'gray' }} />}
+                </TouchableOpacity>
+                {passwordErrorLogin !== '' && <Text className="text-red-500 ml-4">{passwordErrorLogin}</Text>}
+              </View>
               {errorLogin !== '' && <Text className="text-red-500 ml-4">{errorLogin}</Text>}
               <TouchableOpacity className="flex items-end">
                 <Text className="text-gray-700 mb-5">Quên mật khẩu?</Text>

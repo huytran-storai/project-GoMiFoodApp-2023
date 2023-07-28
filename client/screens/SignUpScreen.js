@@ -1,12 +1,12 @@
 import {
     View, Text, TouchableOpacity, Image, TextInput,
     TouchableWithoutFeedback,
-    Keyboard, Alert, ActivityIndicator,Switch
+    Keyboard, Alert, ActivityIndicator, Switch
 } from 'react-native'
 import React, { useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArrowLeftIcon } from 'react-native-heroicons/solid';
+import { ArrowLeftIcon, EyeIcon, EyeSlashIcon } from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
@@ -25,6 +25,11 @@ export default function SignUpScreen() {
     const [fullNameError, setFullNameError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [isSecure, setIsSecure] = useState(true)
+
+    const toggleSecureTextEntry = () => {
+        setIsSecure(prevState => !prevState);
+    };
     const handleSubmit = async () => {
         if (validateFields()) {
             if (email && password) {
@@ -161,24 +166,34 @@ export default function SignUpScreen() {
                                 keyboardType={'phone-pad'}
                             />
                             {phoneNumberError !== '' && <Text className="text-red-500 ml-4">{phoneNumberError}</Text>}
+                            <View>
                             <Text className="text-gray-700 ml-4">Mật Khẩu</Text>
                             <TextInput
-                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordError !== '' && 'border border-red-500'}`}
-                                secureTextEntry
+                                className={`relative p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordError !== '' && 'border border-red-500'}`}
+                                secureTextEntry={isSecure}
                                 value={password}
                                 onChangeText={value => setPassword(value)}
                                 placeholder='Mật Khẩu'
                             />
+                            <TouchableOpacity className='absolute right-[10px] top-[30px]' onPress={toggleSecureTextEntry}>
+                                {isSecure ? <EyeIcon style={{ color: 'gray' }}/> : <EyeSlashIcon style={{ color: 'gray' }}/>}
+                            </TouchableOpacity>
                             {passwordError !== '' && <Text className="text-red-500 ml-4">{passwordError}</Text>}
+                            </View>
+                            <View>
                             <Text className="text-gray-700 ml-4">Nhập Mật Khẩu Lần 2</Text>
                             <TextInput
-                                className={`p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordVerifyError !== '' && 'border border-red-500'}`}
-                                secureTextEntry
+                                className={`relative p-4 bg-gray-100 text-gray-700 rounded-2xl ${passwordVerifyError !== '' && 'border border-red-500'}`}
+                                secureTextEntry={isSecure}
                                 value={passwordVerify}
                                 onChangeText={setPasswordVerify}
                                 placeholder='Mật Khẩu'
                             />
+                            <TouchableOpacity className='absolute right-[10px] top-[30px]' onPress={toggleSecureTextEntry}>
+                                {isSecure ? <EyeIcon style={{ color: 'gray' }}/> : <EyeSlashIcon style={{ color: 'gray' }}/>}
+                            </TouchableOpacity>
                             {passwordVerifyError !== '' && <Text className="text-red-500 ml-4">{passwordVerifyError}</Text>}
+                            </View>
                             <TouchableOpacity
                                 style={{ backgroundColor: '#429F9E' }}
                                 className="py-3 rounded-xl" onPress={handleSubmit}
@@ -189,7 +204,7 @@ export default function SignUpScreen() {
                             </TouchableOpacity>
                         </View>
                         <View className="flex-row justify-center space-x-12 mt-4">
-                        <Text className="text-gray-500">Mật khẩu tối thiểu tám ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt(@,$,%,!,~,*,^)</Text>
+                            <Text className="text-gray-500 text-[12px]">Mật khẩu tối thiểu tám ký tự, ít nhất một chữ cái, một số và một ký tự đặc biệt(@,$,%,!,~,*,^)</Text>
                         </View>
                         <View className="flex-row justify-center mt-7">
                             <Text className="text-gray-500 font-semibold">Bạn đã có tài khoản rồi?</Text>
