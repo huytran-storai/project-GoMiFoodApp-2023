@@ -82,6 +82,7 @@ export default function SignUpScreen() {
         }
 
         // Xác thực mật khẩu
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
         if (password.trim() !== passwordVerify.trim()) {
             setPasswordVerifyError('Mật khẩu không khớp');
             isValid = false;
@@ -93,8 +94,8 @@ export default function SignUpScreen() {
             setPasswordVerifyError('Vui lòng nhập mật khẩu');
             isValid = false;
         }
-        else if (password.trim().length <= 6) {
-            setPasswordError('Mật khẩu phải có ít nhất 6 kí tự');
+        else if (!passwordRegex.test(password.trim())) {
+            setPasswordError('Mật khẩu không hợp lệ!');
             isValid = false;
         } else {
             setPasswordError('');
@@ -157,6 +158,7 @@ export default function SignUpScreen() {
                                 value={phoneNumber}
                                 onChangeText={setPhoneNumber}
                                 placeholder='Số điện thoại'
+                                keyboardType={'phone-pad'}
                             />
                             {phoneNumberError !== '' && <Text className="text-red-500 ml-4">{phoneNumberError}</Text>}
                             <Text className="text-gray-700 ml-4">Mật Khẩu</Text>
