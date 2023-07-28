@@ -25,7 +25,7 @@ export default function DeleteAccount() {
                 <Image source={require('../assets/images/xoataikhoan.png')} className="w-[350px] h-[550px] ml-[20px]" />
                     <View>
                         <TouchableOpacity onPress={handleLogout} className="w-[135px] h-[48px] mt-[10px] ml-[128px] bg-teal-500 rounded-2xl justify-center items-center">
-                            <Text className=" absolute text-white text-[16px] font-bold">{"Submit"}</Text>
+                            <Text className=" absolute text-white text-[16px] font-bold">{"Đồng ý!"}</Text>
                         </TouchableOpacity>
                     </View>
             </ScrollView>
