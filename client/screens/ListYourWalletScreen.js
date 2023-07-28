@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { SafeAreaView, Dimensions, TouchableOpacity, View, Text, TextInput, StyleSheet, Image, ScrollView } from 'react-native'
+import { SafeAreaView, Dimensions, TouchableOpacity, View, Text, TextInput, StyleSheet, Image, ScrollView,Alert } from 'react-native'
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import { TrashIcon } from 'react-native-heroicons/solid';
 import { CheckBox } from 'react-native-elements';
@@ -9,6 +9,11 @@ const ListYourWallet = ({ navigation }) => {
 
     const goBack = () => {
         navigation.goBack();
+    }
+    const savePayment = () =>{
+        Alert.alert('Lưu mặc định thành công!', 'Cảm ơn bạn', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
     }
     return (
         <SafeAreaView className="w-full h-full bg-white">
@@ -79,7 +84,7 @@ const ListYourWallet = ({ navigation }) => {
 
 
             <View className="justify-center items-center mt-[10px]">
-                <TouchableOpacity className="w-[135px] h-[48px] mt-[100px] mb-[10px] bg-teal-500 rounded-2xl justify-center items-center">
+                <TouchableOpacity className="w-[135px] h-[48px] mt-[100px] mb-[10px] bg-teal-500 rounded-2xl justify-center items-center" onPress={savePayment}>
                     <Text className=" text-white text-[16px] font-bold">Thay Đổi</Text>
                 </TouchableOpacity>
             </View>
