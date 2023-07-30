@@ -1,7 +1,8 @@
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeScreen from './screens/HomeScreen';
 import RestaurantScreen from './screens/RestaurantScreen';
 import CartScreen from './screens/CartScreen';
@@ -100,14 +101,13 @@ function MyTabs() {
                     ),
                 }}
             />
-
         </Tab.Navigator>
     );
 }
 export default function Navigation() {
-
-    const { user } = useAuth();
-    if (user) {
+    const { user, isEmailVerified } = useAuth();
+    console.log(user)
+    if (user && isEmailVerified) {
         return (
             <NavigationContainer >
                 <Stack.Navigator initialRouteName="HomeTabs" screenOptions={{
@@ -119,7 +119,6 @@ export default function Navigation() {
                     <Stack.Screen name="OrderPrepairing" options={{ presentation: 'fullScreenModal' }} component={OrderPrepairing} />
                     <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal' }} component={DeliveryScreen} />
                     <Stack.Screen name="CartDetailHistory" options={{ presentation: 'fullScreenModal' }} component={CartDetailHistory} />
-                    
                     <Stack.Screen name="Notification" component={NotificationSetting}/>
                     <Stack.Screen name="Setting" component={SettingScreen}/>
                     <Stack.Screen name="Help" component={HelpCenterScreen}/>
@@ -133,7 +132,6 @@ export default function Navigation() {
                     <Stack.Screen name="ChangePayment" component={ChangePayment} options={{ presentation: 'fullScreenModal' }}/>
                     <Stack.Screen name="DetailDepartment" component={DetailDepartmentScreen}/>
                     <Stack.Screen name="Search" component={SearchScreen}/>
-                    
                 </Stack.Navigator>
             </NavigationContainer>
         )
@@ -151,7 +149,4 @@ export default function Navigation() {
             </NavigationContainer>
         )
     }
-
-    
-
 }

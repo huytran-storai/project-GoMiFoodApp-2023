@@ -8,7 +8,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeftIcon, EyeIcon, EyeSlashIcon } from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
 export default function SignUpScreen() {
@@ -34,18 +34,38 @@ export default function SignUpScreen() {
         if (validateFields()) {
             if (email && password) {
                 try {
-                    setIsLoading(false)
                     await createUserWithEmailAndPassword(auth, email, password);
-                    Alert.alert('Đăng kí thành công!', 'Xin chào bạn', [
-                        { text: 'OK', onPress: () => console.log('OK Pressed') },
-                    ]);
+                    const user = auth.currentUser;
+                   
+                    if (user) {
+                        console.log("fullName before updateProfile:", fullName);
+                        await sendEmailVerification(user);
+                        await updateProfile(user, {
+                            displayName: fullName, // Set the user's full name
+                          });
+                        Alert.alert(
+                            'Đăng kí thành công!',
+                            'Vui lòng kiểm tra email để xác thực tài khoản.',
+                            [
+                                { text: 'OK', onPress: () => navigation.navigate('Login') },
+                            ]
+                        );
+                        setIsLoading(false);
+                    }
                 } catch (err) {
-                    Alert.alert('Đăng kí thất bại!', 'Tài khoản đã tồn tại', [
-                        { text: 'OK', onPress: () => console.log('OK Pressed') },
-                    ]);
-                    setIsLoading(true)
+                    Alert.alert(
+                        'Đăng kí thất bại!',
+                        'Tài khoản đã tồn tại hoặc có lỗi xảy ra. Vui lòng thử lại sau.',
+                        [
+                            { text: 'OK', onPress: () => console.log('OK Pressed') },
+                        ]
+                    );
+                    setIsLoading(true);
                 }
             }
+        }
+        else{
+            setIsLoading(true);
         }
     }
     const validateFields = () => {

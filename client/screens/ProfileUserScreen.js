@@ -1,14 +1,20 @@
 import {TouchableOpacity, View, Text,Image } from 'react-native';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { async } from '@firebase/util';
 import { signOut } from '@firebase/auth';
 import { auth } from '../config/firebase';
 export default function ProfileUserScreen(){
     const navigation = useNavigation();
-    const goToLogIn = () => {
-        navigation.navigate('Login');
-    }
+    const [displayName, setDisplayName] = useState('');
+    useEffect(() => {
+        const user = auth.currentUser;      
+        if (user) {
+          const userDisplayName = user.displayName;       
+          if (userDisplayName) {
+            setDisplayName(userDisplayName);
+          }
+        }
+      }, []);
     const goToMyWallet = () => {
         navigation.navigate('Wallet');
     }
@@ -28,7 +34,7 @@ return(
 <View className="w-[393px] h-[852px] relative bg-teal-500">
     <View className="w-[393px] h-[777px] left-0 top-[145px] absolute bg-white rounded-3xl" />
     <Image className="w-[68px] h-[68px] left-[162px] top-[160px] absolute rounded-full" source={require('../assets/images/Avatar.png')} /> 
-    <Text className="left-[132px] top-[232px] absolute text-stone-900 text-[21px] font-bold">Trần Sỹ Huy</Text>
+    <Text className="text-center top-[232px] text-stone-900 text-[21px] font-bold">{displayName}</Text>
     <TouchableOpacity onPress={goToMyWallet} className="w-[393px] h-[46px] left-0 top-[361px] absolute bg-white border border-stone-300 justify-center items-left">
         <Image className="w-5 h-5 left-[35px] absolute" source={require('../assets/images/Wallet.png')}/>
         <Text className=" left-[60px] absolute text-black text-[13px] font-medium">{"Ví của tôi"}</Text>
