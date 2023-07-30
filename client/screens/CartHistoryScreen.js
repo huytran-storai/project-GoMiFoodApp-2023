@@ -43,7 +43,6 @@ const CartHistoryScreen = ({ navigation }) => {
                                     <Text style={styles.textStyle}>Không</Text>
                                 </Pressable>
                             </View>
-
                         </View>
                     </View>
                 </Modal>
