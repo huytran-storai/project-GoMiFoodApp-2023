@@ -123,7 +123,7 @@ export default function Navigation() {
                     <Stack.Screen name="Wallet" component={MyWalletScreen}/>
                     <Stack.Screen name="Department" component={DepartmentScreen}/>
                     <Stack.Screen name="ListYourWallet" component={ListYourWallet}/>
-                    <Stack.Screen name="ChangePayment" component={ChangePayment}/>
+                    <Stack.Screen name="ChangePayment" component={ChangePayment} options={{ presentation: 'fullScreenModal' }}/>
                     
                 </Stack.Navigator>
             </NavigationContainer>
