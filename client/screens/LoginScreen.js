@@ -41,7 +41,7 @@ export default function LoginScreen() {
 			}
 			if (!isEmailVerified) {
 				setIsLoading(true);
-				setErrorLogin('Tài khoản chưa được xác thực!')
+				setErrorLogin('Tài khoản chưa được xác thực hoặc đã đổi mật khẩu!')
 			}
 		}
 		setIsLoading(true);
