@@ -29,12 +29,13 @@ export default function HomeScreen({navigation}) {
             <TouchableOpacity
             onPress={goTosearch}>
             <View className="flex-row items-center space-x-2 px-4 pb-2 ">
-                <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
+                <View className="flex-row flex-1 justify-around items-center p-3 rounded-full border border-gray-300">
                 
                     <Icon.Search height="25" width="25" stroke="gray" />
-                    <Text className="ml-2">.....</Text>
+                    <TextInput
+ placeholder='tìm kiếm....'></TextInput>
                     
-                    <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-[120px] border-l-gray-300">
+                    <View className="flex-row items-center space-x-1 border-0 ">
                         <Icon.MapPin height="20" width="20" stroke="gray" />
                         <Text className="text-gray-600">Ho Chi Minh,HCM</Text>
                     </View>

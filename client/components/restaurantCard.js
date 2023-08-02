@@ -18,9 +18,9 @@ export default function RestaurantCard({item}) {
             shadowRadius: 7
         }}
        className="mr-6 bg-white rounded-3xl shadow-lg">
-        <Image className="h-36 w-64 rounded-t-3xl" source={{uri: urlFor(item.image).url()}}/>
+        <Image className="h-36 w-full rounded-t-3xl" source={{uri: urlFor(item.image).url()}}/>
         <View className="px-3 pb-4 space-y-2">
-            <Text className="text-lg font-bold pt-2">{item.name}</Text>
+            <Text className="text-sm font-bold pt-2">{item.name}</Text>
             <View className="flex-row items-center space-x-1">
                <Image source={require('../assets/images/fullStar.png')} className="h-4 w-4" />
                 <Text className="text-xs">
@@ -32,7 +32,7 @@ export default function RestaurantCard({item}) {
             </View> 
             <View className="flex-row items-center space-x-1">
                 <Icon.MapPin color="gray" width="15" height="15" />
-                <Text className="text-gray-700 text-xs">{item.address}</Text>    
+                <Text className="text-gray-700 text-xs truncate w-48">{item.address}</Text>    
             </View>      
         </View>
       </View>
