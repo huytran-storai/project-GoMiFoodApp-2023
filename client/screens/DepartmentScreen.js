@@ -44,7 +44,7 @@ export default function DepartmentScreen({navigation}) {
             <View className="flex-row items-center space-x-2 px-4 pb-2 ">
                 <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
                     <Icon.Search height="25" width="25" stroke="gray" />
-                    <TextInput placeholder='tìm món ăn' className="ml-2 flex-1" keyboardType='default' />
+                    <TextInput placeholder='Tìm món ăn...' className="ml-2 flex-1" keyboardType='default' />
                 </View>
             </View>
         </TouchableOpacity> 

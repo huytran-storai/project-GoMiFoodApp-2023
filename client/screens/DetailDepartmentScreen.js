@@ -40,9 +40,6 @@ export default function DetailDepartmentScreen() {
                 >Bún
 
                 </Text>
-                <Icon.Search height="25" width="25" stroke="gray"
-
-                    className="top-6 left-72 " />
             </View>
             <View>
                 <FlatList

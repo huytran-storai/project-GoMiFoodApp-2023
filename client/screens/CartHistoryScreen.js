@@ -50,9 +50,6 @@ const CartHistoryScreen = ({ navigation }) => {
             <View style={styles.topHeader}>
                 <Text style={styles.textHeader}>Tất Cả</Text>
             </View>
-            <View style={styles.topTitle}>
-                <Text style={styles.textTitle}>Đơn Hàng Gần Đây</Text>
-            </View>
             <FlatList data={foodCart}
                 renderItem={({ item }) => <View style={styles.listCart}>
                     <View>

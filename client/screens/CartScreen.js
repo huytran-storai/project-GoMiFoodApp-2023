@@ -57,9 +57,8 @@ export default function CartScreen() {
             <View className="relative py-4 shadow-sm">
                 <TouchableOpacity
                     onPress={() => navigation.goBack()}
-                    style={{ backgroundColor: themeColors.bgColor(1) }}
                     className="absolute z-10 rounded-full p-1 shadow top-5 left-2">
-                    <Icon.ArrowLeft strokeWidth={3} stroke="white" />
+                    <Icon.ArrowLeft strokeWidth={3} stroke={themeColors.bgColor(1)} />
                 </TouchableOpacity>
                 <View>
                     <Text className="text-center font-bold text-xl">Giỏ hàng</Text>

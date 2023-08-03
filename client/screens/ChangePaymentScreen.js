@@ -14,9 +14,8 @@ export default function ChangePaymentScreen() {
       <View className="relative py-4 shadow-sm mt-10">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={{ backgroundColor: themeColors.bgColor(1) }}
           className="absolute z-10 rounded-full p-1 shadow top-5 left-2">
-          <Icon.ArrowLeft strokeWidth={3} stroke="white" />
+          <Icon.ArrowLeft strokeWidth={3} stroke={themeColors.bgColor(1)} />
         </TouchableOpacity>
         <View>
           <Text className="text-center font-bold text-2xl">Chọn thanh toán</Text>
