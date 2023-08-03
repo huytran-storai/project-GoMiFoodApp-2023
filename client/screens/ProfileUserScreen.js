@@ -51,7 +51,7 @@ return(
         <Image className="w-5 h-5 left-[35px] absolute" source={require('../assets/images/Document.png')}/>
         <Text className=" left-[60px] absolute text-black text-[13px] font-medium">{"Điều khoản dịch vụ"}</Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={handleLogout} className="w-[154px] h-[38px] left-[119px] top-[706px] absolute bg-teal-500 rounded-2xl justify-center items-center">
+    <TouchableOpacity onPress={handleLogout} className="w-[154px] h-[38px] left-[110px] top-[600px] absolute bg-teal-500 rounded-2xl justify-center items-center">
         <Text className=" absolute text-white text-[16px] font-bold">{"Đăng Xuất"}</Text> 
     </TouchableOpacity>   
 </View>
